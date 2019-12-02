@@ -81,6 +81,8 @@
 
     .pagination {
         float: right;
+        margin-top: -20px;
+        margin-bottom: 35px;
     }
 
     .demo {
@@ -131,6 +133,10 @@
         float: left;
         margin-right: 13px;
     }
+
+    .fix-top-button {
+        margin-top: 20px;
+    }
 </style>
 <div class="page-inner">
     <h4 class="page-title">Danh sách lịch sử ra / vào</h4>
@@ -138,8 +144,7 @@
         <div class="col-md-12">
             <div class="card card-with-nav">
                 <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h4 class="card-title">Quản lý camera</h4>
+                    <div class="d-flex align-items-center fix-top-button">
                         <button class="btn btn-primary btn-round ml-auto fix-right-mqn" data-toggle="modal"
                             data-target="#xetUser">
                             <i class="fa fa-user"></i>
@@ -182,25 +187,29 @@
                                         <div class="col-sm-6 pr-0">
                                             <div class="form-group form-group-default">
                                                 <label>Mã nhân viên</label>
-                                                <input id="addName" type="text" class="form-control"
-                                                    placeholder="Mã nhân viên">
+                                                <input list="codeUser" class="form-control" placeholder="Mã nhân viên">
+                                                <datalist id="codeUser">
+                                                    <option value="15110678">
+                                                    <option value="16257151">
+                                                    <option value="13128125">
+                                                    <option value="25101530">
+                                                    <option value="15110666">
+                                                    <option value="52145215">
+                                                </datalist>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group form-group-default">
                                                 <label>Tên nhân viên</label>
-                                                <input id="addName" type="text" class="form-control"
-                                                    placeholder="Tên nhân viên">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-group-default">
-                                                <label>Chức vụ</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">Nhân viên</option>
-                                                    <option value="">Quản lý</option>
-                                                    <option value="">Giám đốc</option>
-                                                </select>
+                                                <input list="listUser" class="form-control" placeholder="Tên nhân viên">
+                                                <datalist id="listUser">
+                                                    <option value="Nguyễn Quang Minh">
+                                                    <option value="Hoàng Anh Minh">
+                                                    <option value="Lương Hồng Quân">
+                                                    <option value="Nguyễn Văn Thái">
+                                                    <option value="Hoàng Diệu Linh">
+                                                    <option value="Từ Phương Anh">
+                                                </datalist>
                                             </div>
                                         </div>
                                     </div>
@@ -934,4 +943,10 @@
     });
 </script>
 
+<script>
+    $("#country").select2({
+        placeholder: "Select Country",
+        allowClear: true
+    });
+</script>
 {% endblock javascripts %}

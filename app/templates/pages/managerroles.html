@@ -1,0 +1,147 @@
+
+{% extends "layouts/default.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+<style>
+ .fix-right-mqn {
+            margin-right: 10px;
+        }
+</style>
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Quản lý phân quyền</h4>
+                            <button class="btn btn-primary btn-round">
+                                    <span class="btn-label">
+                                        <i class="fa fa-print"></i>
+                                    </span>
+                                    Print
+                                </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
+                                <thead>
+                                    <tr>
+                                        <th>Họ và tên</th>
+                                        <th>Tên công ty</th>
+                                        <th>Tài khoản</th>
+                                        <th>Phân loại</th>
+                                        <th style="width: 10%">Action</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>NameCompany</th>
+                                        <th>Numberbranch</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr>
+                                        <td>Lương Hồng Quân</td>
+                                        <th>MQ solutions</th>
+                                        <th>quanlh</th>
+                                        <th>Admin</th>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                        <a href="detail-roles.html"><i class="fa fa-edit"></i></a>
+                                                </button>
+                                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                            <td>Nguyễn Quang Minh</td>
+                                            <th>MQ solutions</th>
+                                            <th>quangminh</th>
+                                            <th>Nhân Viên</th>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                            <a href="detail-roles.html"><i class="fa fa-edit"></i></a>
+                                                    </button>
+                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+	<script src="/static/assets/js/setting-demo2.js"></script>
+	<script >
+		$(document).ready(function() {
+			// Add Row
+			$('#add-row').DataTable({
+				"pageLength": 10,
+				initComplete: function () {
+					this.api().columns().every( function () {
+						var column = this;
+						var select = $('<select class="form-control"><option value=""></option></select>')
+						.appendTo( $(column.footer()).empty() )
+						.on( 'change', function () {
+							var val = $.fn.dataTable.util.escapeRegex(
+								$(this).val()
+								);
+
+							column
+							.search( val ? '^'+val+'$' : '', true, false )
+							.draw();
+						} );
+
+						column.data().unique().sort().each( function ( d, j ) {
+							select.append( '<option value="'+d+'">'+d+'</option>' )
+						} );
+					} );
+				}
+			});
+
+			// $('#add-row tbody').on( 'click', 'tr', function () {
+		 //        $(this).toggleClass('selected');
+		 //    } );
+		 
+		 //    $('#selectRowModal').click( function () {
+		 //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
+		 //    } );
+
+
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+			$('#addRowButton').click(function() {
+				$('#add-row').dataTable().fnAddData([
+					$("#addName").val(),
+					$("#addPosition").val(),
+					$("#addOffice").val(),
+					action
+					]);
+				$('#addRowModal').modal('hide');
+
+			});
+		});
+	</script>
+
+{% endblock javascripts %}

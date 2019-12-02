@@ -1,0 +1,94 @@
+
+{% extends "layouts/login-defautl.html" %}
+
+{% block title %} Login {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<style>
+    .card-body{
+        margin: auto;
+        width: 30%;
+        padding: 10px;
+    }
+
+    .btn-center{
+        display: block;
+    margin: 0 auto;
+    }
+
+    .main-panel{
+        width: 100%;
+    }
+</style>
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+
+                            {% if msg %}
+                                <span class="text-danger">{{ msg | safe }}</span>
+                            {% else %}
+                                <span>Đăng nhập tài khoản</span>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <form method="post" action="">
+
+                        {{ form.hidden_tag() }}
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-12">
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="icon-user"></i>
+                                                </span>
+                                            </div>
+                                            {{ form.username(placeholder="Tài Khoản", class="form-control") }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="icon-lock"></i>
+                                                </span>
+                                            </div>
+                                            {{ form.password(placeholder="Mật khẩu", class="form-control", type="password") }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button type="submit" class="btn btn-success btn-center">Đăng nhập</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+    <script src="/assets/js/setting-demo2.js"></script>
+
+{% endblock javascripts %}

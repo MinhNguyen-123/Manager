@@ -1,0 +1,118 @@
+{% extends "layouts/default.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="page-inner">
+    <h4 class="page-title">Thông tin công ty</h4>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card card-with-nav">
+                <div class="card-header">
+                    <div class="row row-nav-line">
+                        <ul class="nav nav-tabs nav-line nav-color-secondary" role="tablist">
+                            <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#chinhanh"
+                                    role="tab" aria-selected="false">Thông tin chi tiết công ty</a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="chinhanh" role="tabpanel" aria-labelledby="profile-tab">
+                            <form action="" method="post">
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Tên công ty</label>
+                                            <input id="nameCompany" type="text" class="form-control" name="name"
+                                                placeholder="Tên công ty" value="MQ Solutions">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <div class="form-group form-group-default">
+                                            <label>Số điện thoại</label>
+                                            <input id="numberPhone" type="text" class="form-control" name="name"
+                                                placeholder="Số điện thoại" value="0123456789">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input id="Email" type="text" class="form-control" name="name"
+                                                placeholder="Email" value="info@solutions.vn">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-group-default">
+                                            <label>Loại hình công ty</label>
+                                            <input id="typeCompany" type="text" class="form-control" name="name"
+                                                placeholder="Loại hình công ty" value="Công ty công nghệ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Hình ảnh đại diện</label>
+                                            <input id="imagesAvata" type="file" class="form-control"
+                                                name="avatacompany">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right mt-3 mb-3">
+                                    <button class="btn btn-success">Lưu thông tin</button>
+                                    <button type="reset" class="btn btn-danger">Hủy Bỏ</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-profile card-secondary">
+                <div class="card-header" style="background-image: url('/static/assets/img/blogpost.jpg')">
+                    <div class="profile-picture">
+                        <div class="avatar avatar-xl">
+                            <img src="/static/assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="user-profile text-center">
+                        <div class="name">MQ Solutions</div>
+                        <div class="desc">Công ty công nghệ</div>
+                        <div class="desc">50 người</div>
+                        <div class="desc">Trụ sở : 12 Khuất Duy Tiến , Hà Nội</div>
+                        <div class="desc">Số điện thoại : 0123456789</div>
+                        <div class="desc">Email : info@solutions.vn</div>
+                        <div class="social-media">
+                            <a class="btn btn-info btn-twitter btn-sm btn-link" href="#">
+                                <span class="btn-label just-icon"><i class="flaticon-twitter"></i></span>
+                            </a>
+                            <a class="btn btn-danger btn-sm btn-link" rel="publisher" href="#">
+                                <span class="btn-label just-icon"><i class="flaticon-google-plus"></i> </span>
+                            </a>
+                            <a class="btn btn-primary btn-sm btn-link" rel="publisher" href="#">
+                                <span class="btn-label just-icon"><i class="flaticon-facebook"></i> </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script src="/static/assets/js/setting-demo2.js"></script>
+
+{% endblock javascripts %}

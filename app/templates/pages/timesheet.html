@@ -1,0 +1,937 @@
+{% extends "layouts/default.html" %}
+
+{% block title %} Widgets {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+
+
+    .avatar {
+        margin-bottom: 50px;
+    }
+
+
+    .card-profile .user-profile .desc {
+        color: black;
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 11px;
+
+    }
+
+    .user-profile a {
+        color: white;
+        background: #6861ce;
+        padding: 5px 5px;
+        border-radius: 5px;
+    }
+
+    .user-profile a:hover {
+        text-decoration: none;
+    }
+
+    .card-profile .profile-picture {
+        position: absolute;
+        margin: 0 auto;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        text-align: right;
+    }
+
+
+
+
+    .avatar-user {
+        width: 2.5rem;
+        height: 2.5rem;
+        -o-object-fit: cover;
+        object-fit: cover;
+        border: 3px solid white;
+        border-radius: 50%;
+    }
+
+    .item-user-mqn {
+        float: left;
+        width: 145px;
+        margin-right: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .item-info-profile-user {
+        padding: 5px 5px;
+    }
+
+    .desc {
+        font-size: 13px;
+        text-align: center;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .pagination {
+        float: right;
+    }
+
+    .demo {
+        position: relative;
+        top: 30px
+    }
+
+    .fix-right-mqn {
+        margin-right: 10px;
+    }
+
+    .image-checkbox-container input[type="checkbox"] {
+        display: none;
+    }
+
+    .image-checkbox-container img {
+        border: 0;
+    }
+
+    .avata-mqn-pro {
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .boder-pro-user-mqn-main {
+        border: 1px solid white;
+        border-radius: 5px;
+        height: 214px;
+    }
+
+    .item-fix-width-pro {
+        border: 1px solid white;
+        border-radius: 5px;
+        height: 240px;
+    }
+
+    .item-info-profile-user-nhandang {
+        position: relative;
+        top: -25px;
+    }
+
+    .avata-pro-mqn-main-chosse img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .avata-pro-mqn-main-chosse {
+        float: left;
+        margin-right: 13px;
+    }
+</style>
+<div class="page-inner">
+    <h4 class="page-title">Danh sách lịch sử ra / vào</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-with-nav">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Quản lý camera</h4>
+                        <button class="btn btn-primary btn-round ml-auto fix-right-mqn" data-toggle="modal"
+                            data-target="#xetUser">
+                            <i class="fa fa-user"></i>
+                            Xét người dùng
+                        </button>
+                        <a href="add-user.html">
+                            <button class="btn btn-primary btn-round">
+                                <span class="btn-label">
+                                    <i class="fa fa-plus"></i>
+                                </span>
+                                Thêm người dùng
+                            </button>
+                        </a>
+                    </div>
+                    <div class="row row-nav-line">
+                        <ul class="nav nav-tabs nav-line nav-color-secondary" role="tablist">
+                            <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#alluser"
+                                    role="tab" aria-selected="false">Tất cả</a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#nhandang" role="tab"
+                                    aria-selected="false">Nhận diện</a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#khongnhandang" role="tab"
+                                    aria-selected="false">không nhận diện</a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal fade" id="xetUser" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">Thông tin người dùng</span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Mã nhân viên</label>
+                                                <input id="addName" type="text" class="form-control"
+                                                    placeholder="Mã nhân viên">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Tên nhân viên</label>
+                                                <input id="addName" type="text" class="form-control"
+                                                    placeholder="Tên nhân viên">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Chức vụ</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Nhân viên</option>
+                                                    <option value="">Quản lý</option>
+                                                    <option value="">Giám đốc</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p><small>Hình ảnh người dùng</small></p>
+                                    <div class="avata-pro-mqn-main-chosse">
+                                        <img src="/static/assets/img/profile.jpg" alt="">
+                                    </div>
+                                    <div class="avata-pro-mqn-main-chosse">
+                                        <img src="/static/assets/img/profile.jpg" alt="">
+                                    </div>
+                                    <div class="avata-pro-mqn-main-chosse">
+                                        <img src="/static/assets/img/profile.jpg" alt="">
+                                    </div>
+
+                                    <div class="avata-pro-mqn-main-chosse">
+                                        <img src="/static/assets/img/profile.jpg" alt="">
+                                    </div>
+                                    <div class="avata-pro-mqn-main-chosse">
+                                        <img src="/static/assets/img/profile.jpg" alt="">
+                                    </div>
+                                    <div class="avata-pro-mqn-main-chosse">
+                                        <img src="/static/assets/img/profile.jpg" alt="">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer no-bd">
+                                <button type="button" id="addRowButton" class="btn btn-primary">Xét người dùng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="add-row" class="display table table-striped table-hover table-head-bg-primary">
+                    <div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="alluser" role="tabpanel" aria-labelledby="alluser-tab">
+                                    <div class="row">
+                                        <!-- Nhận ra -->
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <a href="profile.html#loginhistorytab">
+                                                <div class="card card-profile"
+                                                    style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                    <div class="card-header">
+                                                        <div class="profile-picture">
+                                                            <div class="avatar avatar-user">
+                                                                <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                    class="avatar-img rounded-circle">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="item-info-profile-user-nhandang">
+                                                    <div class="desc">Nguyễn Quang Minh</div>
+                                                    <div class="desc">Camera ID : 1514421</div>
+                                                    <div class="desc">15:30:25 27/11/2019</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <!-- Không nhận ra -->
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="item-user-mqn">
+                                            <span class="image-checkbox-container">
+                                                <div class="boder-pro-user-mqn-main">
+                                                    <input type="checkbox" name="black-box" value="1" />
+                                                    <div class="card card-profile">
+                                                        <img src="/static/assets/img/profile.jpg" alt=""
+                                                            class="avata-mqn-pro">
+                                                        <div class="item-info-profile-user">
+                                                            <div class="desc">Camera ID : 1514421</div>
+                                                            <div class="desc">15:30:25 27/11/2019</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="demo">
+                                        <ul class="pagination pg-primary">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">Previous</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">Next</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="nhandang" role="tabpanel" aria-labelledby="settings-tab">
+                                    <div class="row">
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                        <div class="item-user-mqn item-fix-width-pro">
+                                            <div class="card card-profile"
+                                                style="background: url('/static/assets/img/profile.jpg') no-repeat;background-size: cover; height: 160px;">
+                                                <div class="card-header">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-user">
+                                                            <img src="/static/assets/img/profile2.jpg" alt="..."
+                                                                class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="item-info-profile-user-nhandang">
+                                                <div class="desc">Nguyễn Quang Minh</div>
+                                                <div class="desc">Camera ID : 1514421</div>
+                                                <div class="desc">15:30:25 27/11/2019</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="demo">
+                                        <ul class="pagination pg-primary">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">Previous</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">Next</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="khongnhandang" role="tabpanel"
+                                    aria-labelledby="khongnhandang-tab">
+                                    <div class="row">
+                                        <form method="GET">
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="item-user-mqn">
+                                                <span class="image-checkbox-container">
+                                                    <div class="boder-pro-user-mqn-main">
+                                                        <input type="checkbox" name="black-box" value="1" />
+                                                        <div class="card card-profile">
+                                                            <img src="/static/assets/img/profile.jpg" alt=""
+                                                                class="avata-mqn-pro">
+                                                            <div class="item-info-profile-user">
+                                                                <div class="desc">Camera ID : 1514421</div>
+                                                                <div class="desc">15:30:25 27/11/2019</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="demo">
+                                        <ul class="pagination pg-primary">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">Previous</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">Next</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script src="/static/assets/js/setting-demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add Row
+        $('#add-row').DataTable({
+            "pageLength": 10,
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $(
+                            '<select class="form-control"><option value=""></option></select>'
+                        )
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d +
+                            '</option>')
+                    });
+                });
+            }
+        });
+
+        // $('#add-row tbody').on( 'click', 'tr', function () {
+        //        $(this).toggleClass('selected');
+        //    } );
+
+        //    $('#selectRowModal').click( function () {
+        //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
+        //    } );
+
+
+        var action =
+            '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+        $('#addRowButton').click(function () {
+            $('#add-row').dataTable().fnAddData([
+                $("#addName").val(),
+                $("#addPosition").val(),
+                $("#addOffice").val(),
+                action
+            ]);
+            $('#addRowModal').modal('hide');
+
+        });
+    });
+</script>
+
+<script>
+    if (location.search)
+        alert(location.search);
+
+    $('.image-checkbox-container .card-profile').live('click', function () {
+        if (!$(this).prev('input[type="checkbox"]').prop('checked')) {
+            $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked', 'checked');
+            this.style.border = '2px solid #6861ce';
+
+        } else {
+            $(this).prev('input[type="checkbox"]').prop('checked', false).removeAttr('checked');
+            this.style.border = '0';
+
+        }
+    });
+</script>
+
+{% endblock javascripts %}

@@ -1,0 +1,303 @@
+{% extends "layouts/default.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+<style>
+    .fix-right-mqn {
+        margin-right: 10px;
+    }
+
+    .flaticon-success {
+        color: green;
+        font-weight: bold;
+    }
+
+    .flaticon-error {
+        color: grey;
+        font-weight: bold;
+    }
+</style>
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Quản lý vị trí lắp đặt camera công ty</h4>
+                        <button class="btn btn-primary btn-round ml-auto fix-right-mqn" data-toggle="modal"
+                            data-target="#addRowModal">
+                            <i class="fa fa-plus"></i>
+                            Thêm camera
+                        </button>
+                        <button class="btn btn-primary btn-round">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
+                        </button>
+                        <!-- <button class="btn btn-primary btn-round ml-auto" id="selectRowModal">
+                                <i class="fa fa-plus"></i>
+                                Select Row
+                            </button> -->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Modal -->
+                    <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header no-bd">
+                                    <h5 class="modal-title">
+                                        <span class="fw-mediumbold">Thông tin camera</span>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-6 pr-0">
+                                                <div class="form-group form-group-default">
+                                                    <label>Camera ID</label>
+                                                    <input id="CameraId" type="text" class="form-control"
+                                                        placeholder="Camera ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Địa chỉ ID</label>
+                                                    <input id="addessIdCamera" type="text" class="form-control"
+                                                        placeholder="Địa chỉ ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 pr-0">
+                                                <div class="form-group form-group-default">
+                                                    <label>Chi nhánh lắp đặt</label>
+                                                    <select name="" id="branchInstall" class="form-control">
+                                                        <option value="">Hà Nội</option>
+                                                        <option value="">Hạ Long</option>
+                                                        <option value="">Thái Nguyên</option>
+                                                        <option value="">Hồ Chí Minh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Khu vực lắp đặt</label>
+                                                    <input id="areaInstall" type="text" class="form-control"
+                                                        placeholder="Khu vực lắp đặt">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label>Trạng thái</label>
+                                                    <select name="" id="status" class="form-control">
+                                                        <option value="">Active</option>
+                                                        <option value="">Not active</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button type="button" id="addRowButton" class="btn btn-primary">Thêm Camera</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="add-row" class="display table table-striped table-hover table-head-bg-primary">
+                            <thead>
+                                <tr>
+                                    <th>Camera ID</th>
+                                    <th>Địa chỉ IP</th>
+                                    <th>Chi nhánh lắp đặt</th>
+                                    <th>Khu vực lắp đặt</th>
+                                    <th>Trạng thái</th>
+                                    <th style="width: 10%">Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>cameraid</th>
+                                    <th>addressip</th>
+                                    <th>branch</th>
+                                    <th>location</th>
+                                    <th>status</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>123456789</td>
+                                    <td>0987546145</td>
+                                    <td>12 khuất duy tiến , Hà Nội</td>
+                                    <td>Phòng họp</td>
+                                    <td><span class="flaticon-error"> Offline</span> </td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="detail-camera-company.html"><i class="fa fa-edit"></i></a>
+                                            </button>
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>123456789</td>
+                                    <td>0987546145</td>
+                                    <td>12 khuất duy tiến , Hà Nội</td>
+                                    <td>Phòng họp</td>
+                                    <td><span class="flaticon-success"> Online</span> </td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="detail-camera-company.html"><i class="fa fa-edit"></i></a>
+                                            </button>
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script src="/static/assets/js/setting-demo2.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add Row
+        $('#add-row').DataTable({
+            "pageLength": 10,
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $(
+                            '<select class="form-control"><option value=""></option></select>'
+                        )
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d +
+                            '</option>')
+                    });
+                });
+            }
+        });
+
+        // $('#add-row tbody').on( 'click', 'tr', function () {
+        //        $(this).toggleClass('selected');
+        //    } );
+
+        //    $('#selectRowModal').click( function () {
+        //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
+        //    } );
+
+
+        var action =
+            '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+        $('#addRowButton').click(function () {
+            $('#add-row').dataTable().fnAddData([
+                $("#addName").val(),
+                $("#addPosition").val(),
+                $("#addOffice").val(),
+                action
+            ]);
+            $('#addRowModal').modal('hide');
+
+        });
+    });
+</script>
+<script>
+    //== Class definition
+    var SweetAlert2Demo = function () {
+        //== Demos
+        var initDemos = function () {
+            $('#alert_demo_8').click(function (e) {
+                swal({
+                    title: 'Bạn có chắc không?',
+                    type: 'warning',
+                    buttons: {
+                        cancel: {
+                            visible: true,
+                            text: 'HỦY BỎ',
+                            className: 'btn btn-danger'
+                        },
+                        confirm: {
+                            text: 'ĐỒNG Ý , XÓA',
+                            className: 'btn btn-success'
+                        }
+                    }
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        swal("Xóa thông tin thành công", {
+                            icon: "success",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
+                            }
+                        });
+                    } else {
+                        swal("Bạn đã hủy tác vụ xóa", {
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
+                            }
+                        });
+                    }
+                });
+            })
+
+        };
+
+        return {
+            //== Init
+            init: function () {
+                initDemos();
+            },
+        };
+    }();
+
+    //== Class Initialization
+    jQuery(document).ready(function () {
+        SweetAlert2Demo.init();
+    });
+</script>
+{% endblock javascripts %}

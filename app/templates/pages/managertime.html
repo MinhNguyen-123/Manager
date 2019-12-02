@@ -1,0 +1,720 @@
+{% extends "layouts/default.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+<style>
+    .flaticon-success {
+        color: green;
+        font-weight: bold;
+    }
+
+    .flaticon-error {
+        color: grey;
+        font-weight: bold;
+    }
+
+    .fa-check {
+        color: green
+    }
+
+    .fix-width-chart {
+        display: block;
+    }
+
+    @media screen and (max-width: 1330px) and (min-width: 1024) {
+        #lineChart canvas{
+            width: auto !important;
+        }
+    }
+
+</style>
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Quản lý thời gian</h4>
+                        <button class="btn btn-primary btn-round ml-auto">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
+                        </button>
+                    </div>
+                    <div class="row row-nav-line">
+                        <ul class="nav nav-tabs nav-line nav-color-secondary" role="tablist">
+                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#days"
+                                    role="tab" aria-selected="false">Hôm nay</a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#weeks" role="tab"
+                                    aria-selected="false">Tuần</a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#months" role="tab"
+                                    aria-selected="false">Tháng</a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Modal -->
+                    <div class="tab-content">
+                        <div class="tab-pane sparklineChart active" id="days" role="tabpanel" aria-labelledby="days-tab">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="card card-stats card-primary card-round">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div class="icon-big text-center">
+                                                        <i class="flaticon-interface-6"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7 col-stats">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Số lượng đi muộn</p>
+                                                        <h4 class="card-title">50</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="card card-stats card-info card-round">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div class="icon-big text-center">
+                                                        <i class="flaticon-interface-6"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7 col-stats">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Số lượng về sớm</p>
+                                                        <h4 class="card-title">60</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="add-row"
+                                    class="display table table-striped table-hover table-head-bg-primary">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã nhân viên</th>
+                                            <th>Họ và tên</th>
+                                            <th>Chức vụ</th>
+                                            <th>Thời gian bắt đầu</th>
+                                            <th>Thời gian kết thúc</th>
+                                            <th>Đi muộn</th>
+                                            <th>Về sớm</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>codeuser</th>
+                                            <th>username</th>
+                                            <th>position</th>
+                                            <th>checkin</th>
+                                            <th>checkount</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>15510678</td>
+                                            <td>
+
+                                                Nguyễn Quang Minh
+                                            </td>
+                                            <th>Lập trình viên</th>
+                                            <th>7:40:30</th>
+                                            <th>17:30:30</th>
+                                            <th></th>
+                                            <th><i class="fa fa-check"></i></th>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title=""
+                                                        class="btn btn-link btn-primary btn-lg"
+                                                        data-original-title="Edit Task">
+                                                        <a href="profile.html#loginhistorytab"><i
+                                                                class="fa fa-edit"></i></a>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body pb-0">
+                                            <div class="h1 fw-bold float-right text-primary">+5%</div>
+                                            <h2 class="mb-2">17</h2>
+                                            <p class="text-muted">Users online</p>
+                                            <div class="pull-in sparkline-fix">
+                                                <div id="lineChart"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane sparklineChart active" id="weeks" role="tabpanel" aria-labelledby="weeks-tab">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="card card-stats card-primary card-round">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div class="icon-big text-center">
+                                                        <i class="flaticon-interface-6"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7 col-stats">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Số lượng đi muộn</p>
+                                                        <h4 class="card-title">100</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="card card-stats card-info card-round">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div class="icon-big text-center">
+                                                        <i class="flaticon-interface-6"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7 col-stats">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Số lượng về sớm</p>
+                                                        <h4 class="card-title">150</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="add-row2"
+                                    class="display table table-striped table-hover table-head-bg-primary">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã nhân viên</th>
+                                            <th>Họ và tên</th>
+                                            <th>Chức vụ</th>
+                                            <th>Thời gian bắt đầu</th>
+                                            <th>Thời gian kết thúc</th>
+                                            <th>Đi muộn</th>
+                                            <th>Về sớm</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>codeuser</th>
+                                            <th>username</th>
+                                            <th>position</th>
+                                            <th>checkin</th>
+                                            <th>checkount</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+
+                                        <tr>
+                                            <td>15510678</td>
+                                            <td>
+
+                                                Nguyễn Quang Minh
+                                            </td>
+                                            <th>Lập trình viên</th>
+                                            <th>7:40:30</th>
+                                            <th>17:30:30</th>
+                                            <th></th>
+                                            <th><i class="fa fa-check"></i></th>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title=""
+                                                        class="btn btn-link btn-primary btn-lg"
+                                                        data-original-title="Edit Task">
+                                                        <a href="profile.html#loginhistorytab"><i
+                                                                class="fa fa-edit"></i></a>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>15510678</td>
+                                            <td>
+
+                                                Nguyễn Quang Minh
+                                            </td>
+                                            <th>Lập trình viên</th>
+                                            <th>7:40:30</th>
+                                            <th>17:30:30</th>
+                                            <th></th>
+                                            <th><i class="fa fa-check"></i></th>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title=""
+                                                        class="btn btn-link btn-primary btn-lg"
+                                                        data-original-title="Edit Task">
+                                                        <a href="profile.html#loginhistorytab"><i
+                                                                class="fa fa-edit"></i></a>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row" style="display: block;">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body pb-0">
+                                            <div class="h1 fw-bold float-right text-danger">-3%</div>
+                                            <h2 class="mb-2">27</h2>
+                                            <p class="text-muted">New Users</p>
+                                            <div class="pull-in sparkline-fix">
+                                                <div id="lineChart2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="tab-pane sparklineChart active" id="months" role="tabpanel" aria-labelledby="months-tab">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="card card-stats card-primary card-round">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div class="icon-big text-center">
+                                                        <i class="flaticon-interface-6"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7 col-stats">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Số lượng đi muộn</p>
+                                                        <h4 class="card-title">260</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="card card-stats card-info card-round">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div class="icon-big text-center">
+                                                        <i class="flaticon-interface-6"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7 col-stats">
+                                                    <div class="numbers">
+                                                        <p class="card-category">Số lượng về sớm</p>
+                                                        <h4 class="card-title">230</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="add-row3"
+                                    class="display table table-striped table-hover table-head-bg-primary">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã nhân viên</th>
+                                            <th>Họ và tên</th>
+                                            <th>Chức vụ</th>
+                                            <th>Thời gian bắt đầu</th>
+                                            <th>Thời gian kết thúc</th>
+                                            <th>Đi muộn</th>
+                                            <th>Về sớm</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>codeuser</th>
+                                            <th>username</th>
+                                            <th>position</th>
+                                            <th>checkin</th>
+                                            <th>checkount</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>15510678</td>
+                                            <td>
+
+                                                Nguyễn Quang Minh
+                                            </td>
+                                            <th>Lập trình viên</th>
+                                            <th>7:40:30</th>
+                                            <th>17:30:30</th>
+                                            <th></th>
+                                            <th><i class="fa fa-check"></i></th>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title=""
+                                                        class="btn btn-link btn-primary btn-lg"
+                                                        data-original-title="Edit Task">
+                                                        <a href="profile.html#loginhistorytab"><i
+                                                                class="fa fa-edit"></i></a>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>15510678</td>
+                                            <td>
+
+                                                Nguyễn Quang Minh
+                                            </td>
+                                            <th>Lập trình viên</th>
+                                            <th>7:40:30</th>
+                                            <th>17:30:30</th>
+                                            <th></th>
+                                            <th><i class="fa fa-check"></i></th>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title=""
+                                                        class="btn btn-link btn-primary btn-lg"
+                                                        data-original-title="Edit Task">
+                                                        <a href="profile.html#loginhistorytab"><i
+                                                                class="fa fa-edit"></i></a>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>15510678</td>
+                                            <td>
+
+                                                Nguyễn Quang Minh
+                                            </td>
+                                            <th>Lập trình viên</th>
+                                            <th>7:40:30</th>
+                                            <th>17:30:30</th>
+                                            <th></th>
+                                            <th><i class="fa fa-check"></i></th>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title=""
+                                                        class="btn btn-link btn-primary btn-lg"
+                                                        data-original-title="Edit Task">
+                                                        <a href="profile.html#loginhistorytab"><i
+                                                                class="fa fa-edit"></i></a>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body pb-0">
+                                            <div class="h1 fw-bold float-right text-warning">+7%</div>
+                                            <h2 class="mb-2">213</h2>
+                                            <p class="text-muted">Transactions</p>
+                                            <div class="pull-in sparkline-fix">
+                                                <div id="lineChart3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script src="/static/assets/js/setting-demo2.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Add Row
+        $('#add-row').DataTable({
+            "pageLength": 10,
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $(
+                            '<select class="form-control"><option value=""></option></select>'
+                        )
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d +
+                            '</option>')
+                    });
+                });
+            }
+        });
+
+        // $('#add-row tbody').on( 'click', 'tr', function () {
+        //        $(this).toggleClass('selected');
+        //    } );
+
+        //    $('#selectRowModal').click( function () {
+        //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
+        //    } );
+
+
+        var action =
+            '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+        $('#addRowButton').click(function () {
+            $('#add-row').dataTable().fnAddData([
+                $("#addName").val(),
+                $("#addPosition").val(),
+                $("#addOffice").val(),
+                action
+            ]);
+            $('#addRowModal').modal('hide');
+
+        });
+
+        //
+        $(".sparklineChart").removeClass("active").first().addClass("active")
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Add Row
+        $('#add-row2').DataTable({
+            "pageLength": 10,
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $(
+                            '<select class="form-control"><option value=""></option></select>'
+                        )
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d +
+                            '</option>')
+                    });
+                });
+            }
+        });
+
+        // $('#add-row tbody').on( 'click', 'tr', function () {
+        //        $(this).toggleClass('selected');
+        //    } );
+
+        //    $('#selectRowModal').click( function () {
+        //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
+        //    } );
+
+
+        var action =
+            '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+        $('#addRowButton').click(function () {
+            $('#add-row').dataTable().fnAddData([
+                $("#addName").val(),
+                $("#addPosition").val(),
+                $("#addOffice").val(),
+                action
+            ]);
+            $('#addRowModal').modal('hide');
+
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Add Row
+        $('#add-row3').DataTable({
+            "pageLength": 10,
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $(
+                            '<select class="form-control"><option value=""></option></select>'
+                        )
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d +
+                            '</option>')
+                    });
+                });
+            }
+        });
+
+        // $('#add-row tbody').on( 'click', 'tr', function () {
+        //        $(this).toggleClass('selected');
+        //    } );
+
+        //    $('#selectRowModal').click( function () {
+        //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
+        //    } );
+
+
+        var action =
+            '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+        $('#addRowButton').click(function () {
+            $('#add-row').dataTable().fnAddData([
+                $("#addName").val(),
+                $("#addPosition").val(),
+                $("#addOffice").val(),
+                action
+            ]);
+            $('#addRowModal').modal('hide');
+
+        });
+    });
+</script>
+
+<script>
+    //== Class definition
+    var SweetAlert2Demo = function () {
+        //== Demos
+        var initDemos = function () {
+            $('#alert_demo_8').click(function (e) {
+                swal({
+                    title: 'Bạn có chắc không?',
+                    type: 'warning',
+                    buttons: {
+                        cancel: {
+                            visible: true,
+                            text: 'HỦY BỎ',
+                            className: 'btn btn-danger'
+                        },
+                        confirm: {
+                            text: 'ĐỒNG Ý , XÓA',
+                            className: 'btn btn-success'
+                        }
+                    }
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        swal("Xóa thông tin thành công", {
+                            icon: "success",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
+                            }
+                        });
+                    } else {
+                        swal("Bạn đã hủy tác vụ xóa", {
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
+                            }
+                        });
+                    }
+                });
+            })
+
+        };
+
+        return {
+            //== Init
+            init: function () {
+                initDemos();
+            },
+        };
+    }();
+
+    //== Class Initialization
+    jQuery(document).ready(function () {
+        SweetAlert2Demo.init();
+    });
+</script>
+
+<script>
+    $('#lineChart').sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: 'line',
+        height: '70',
+        width: '100%',
+        lineWidth: '2',
+        lineColor: '#177dff',
+        fillColor: 'rgba(23, 125, 255, 0.14)'
+    });
+
+    $('#lineChart2').sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: 'line',
+        height: '70',
+        width: '100%',
+        lineWidth: '2',
+        lineColor: '#f3545d',
+        fillColor: 'rgba(243, 84, 93, .14)'
+    });
+
+    $('#lineChart3').sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: 'line',
+        height: '70',
+        width: '100%',
+        lineWidth: '2',
+        lineColor: '#ffa534',
+        fillColor: 'rgba(255, 165, 52, .14)'
+    });
+
+</script>
+{% endblock javascripts %}

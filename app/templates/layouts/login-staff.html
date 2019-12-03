@@ -3,7 +3,7 @@
 <head>
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>{% block title %}{% endblock %} </title>
+	<title>{% block title %}Open-Source Admin Panel{% endblock %}</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="/static/assets/img/icon.ico" type="image/x-icon"/>
 
@@ -25,7 +25,8 @@
 	<link rel="stylesheet" href="/static/assets/css/atlantis.min.css">
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="/static/assets/css/demo.css">
+    <link rel="stylesheet" href="/static/assets/css/demo.css">
+    <link rel="stylesheet" href="/static/assets/css/custom.css">
 
     <!-- Specific CSS goes HERE -->
     {% block stylesheets %}{% endblock stylesheets %}
@@ -35,9 +36,6 @@
 
 	<div class="wrapper {% block layout %}{% endblock layout %}">
 
-		{% include 'includes/navigation.html' %}
-
-		{% include 'includes/sidenav.html' %}
 
 		<div class="main-panel">
 

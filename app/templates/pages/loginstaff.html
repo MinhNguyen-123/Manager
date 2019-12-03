@@ -1,0 +1,198 @@
+{% extends "layouts/login-defautl.html" %}
+
+{% block title %} Đăng nhập Admin{% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<style>
+    .card-body {
+        margin: auto;
+        width: 30%;
+        padding: 10px;
+    }
+
+    .btn-center {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .main-panel {
+        width: 100%;
+    }
+
+    .card-title {
+        text-align: center;
+    }
+
+    .link-login {
+        position: relative;
+        left: -9.3%;
+        top: -137px;
+        background: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    .link-login:hover {
+        color: white;
+        text-decoration: none;
+        background: transparent;
+    }
+</style>
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+
+                        {% if msg %}
+                        <span class="text-danger">{{ msg | safe }}</span>
+                        {% else %}
+                        <span>Đăng nhập tài khoản</span>
+                        {% endif %}
+
+                    </div>
+                </div>
+                <form method="post" action="">
+                    {{ form.hidden_tag() }}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12">
+
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="icon-user"></i>
+                                            </span>
+                                        </div>
+                                        {{ form.username(placeholder="Tài Khoản", class="form-control") }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="icon-lock"></i>
+                                            </span>
+                                        </div>
+                                        {{ form.password(placeholder="Mật khẩu", class="form-control", type="password") }}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button type="submit" class="btn btn-success btn-center">Đăng nhập</button>
+                    </div>
+
+                </form>
+                <button type="button" class="link-login" data-toggle="modal" data-target="#myModal"><i>Đăng kí tài
+                        khoản</i></button>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="pull-left">Vui lòng nhập các thông tin sau !</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-12 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Tài khoản</label>
+                                                <input id="CameraId" type="text" class="form-control"
+                                                    placeholder="Tài khoản">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Mật khẩu</label>
+                                                <input id="AddressId" type="text" class="form-control"
+                                                    placeholder="Mật khẩu">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Xác nhận mật khẩu</label>
+                                                <input id="CameraId" type="text" class="form-control"
+                                                    placeholder="Xác nhận mật khẩu">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Họ và tên</label>
+                                                <input id="AddressId" type="text" class="form-control"
+                                                    placeholder="Họ và tên">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Mã nhân viên</label>
+                                                <input id="CameraId" type="text" class="form-control"
+                                                    placeholder="Mã nhân viên">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Chức vụ công ty</label>
+                                                <input id="AddressId" type="text" class="form-control"
+                                                    placeholder="Chức vụ công ty">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Chi nhánh công ty</label>
+                                                <input id="CameraId" type="text" class="form-control"
+                                                    placeholder="Chi nhánh công ty">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Địa chỉ công ty</label>
+                                                <input id="AddressId" type="text" class="form-control"
+                                                    placeholder="Địa chỉ công ty">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pr-0">
+                                            <div class="form-group form-group-default">
+                                                <label>Email</label>
+                                                <input id="AddressId" type="text" class="form-control"
+                                                    placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                        <div class="container">
+                                            <button type="button" id="addRowButton"
+                                                class="btn btn-primary pull-right">Tạo tài khoản</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script src="/assets/js/setting-demo2.js"></script>
+
+{% endblock javascripts %}

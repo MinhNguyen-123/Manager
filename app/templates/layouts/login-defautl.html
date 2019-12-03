@@ -3,7 +3,7 @@
 <head>
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Flask Dashboard Atlantis - {% block title %}Open-Source Admin Panel{% endblock %} | AppSeed </title>
+	<title>{% block title %}Open-Source Admin Panel{% endblock %}</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="/static/assets/img/icon.ico" type="image/x-icon"/>
 
@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/static/assets/css/custom.css">
 
     <!-- Specific CSS goes HERE -->
-    {% block stylesheets %}{% endblock stylesheets %}
+
 
 </head>
 <body data-background-color="dark">
@@ -49,7 +49,6 @@
 
 		</div>
 		
-		{% include 'includes/aside-settings.html' %}
 
 	</div>
 

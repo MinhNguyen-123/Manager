@@ -1,4 +1,3 @@
-
 {% extends "layouts/default.html" %}
 
 {% block title %} Quản lý công ty {% endblock title %}
@@ -9,110 +8,190 @@
 
 {% block content %}
 <style>
- .fix-right-mqn {
-            margin-right: 10px;
-        }
+    .fix-right-mqn {
+        margin-right: 10px;
+    }
+
+    .package {
+        
+        color: white;
+        padding: 10px 10px !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .basic{
+        background: #575962;
+    }
+    .standard {
+        background: #ffc107;
+    }
+
+    .advanced {
+        background: #dc3545;
+    }
 </style>
-    <div class="page-inner">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <h4 class="card-title">Quản lý công ty</h4>
-                            <button class="btn btn-primary btn-round ml-auto fix-right-mqn" data-toggle="modal" data-target="#addRowModal">
-                                <i class="fa fa-plus"></i>
-                                Thêm công ty
-                            </button>
-                            <button class="btn btn-primary btn-round">
-                                    <span class="btn-label">
-                                        <i class="fa fa-print"></i>
-                                    </span>
-                                    Print
-                                </button>
-                        </div>
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Quản lý công ty</h4>
+                        <button class="btn btn-primary btn-round ml-auto fix-right-mqn" data-toggle="modal"
+                            data-target="#addRowModal">
+                            <i class="fa fa-plus"></i>
+                            Thêm công ty
+                        </button>
+                        <button class="btn btn-primary btn-round">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
+                        </button>
                     </div>
-                    <div class="card-body">
-                        <!-- Modal -->
-                        <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header no-bd">
-                                        <h5 class="modal-title">
-                                            <span class="fw-mediumbold">Thông tin công</span> 
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-sm-6 pr-0">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Tên công ty</label>
-                                                        <input id="nameCompany" type="text" class="form-control" placeholder="Tên công ty">
-                                                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Modal -->
+                    <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header no-bd">
+                                    <h5 class="modal-title">
+                                        <span class="fw-mediumbold">Thông tin công</span>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-6 pr-0">
+                                                <div class="form-group form-group-default">
+                                                    <label>Tên công ty</label>
+                                                    <input id="nameCompany" type="text" class="form-control"
+                                                        placeholder="Tên công ty">
                                                 </div>
-                                                <div class="col-sm-6 pr-0">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Số điện thoại</label>
-                                                            <input id="phoneNumber" type="text" class="form-control" placeholder="Số điện thoại">
-                                                        </div>
-                                                    </div>
-                                                <div class="col-md-6 pr-0">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Email</label>
-                                                        <input id="email" type="text" class="form-control" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 pr-0">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Loại hình công ty</label>
-                                                            <input id="typeCompany" type="text" class="form-control" placeholder="Loại hình công ty">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Số lượng nhân viên</label>
-                                                            <input id="amount" type="text" class="form-control" placeholder="Số lượng nhân viên">
-                                                        </div>
-                                                    </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer no-bd">
-                                        <button type="button" id="addRowButton" class="btn btn-primary">Thêm người dùng</button>
-                                    </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Số điện thoại</label>
+                                                    <input id="phoneNumber" type="text" class="form-control"
+                                                        placeholder="Số điện thoại">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pr-0">
+                                                <div class="form-group form-group-default">
+                                                    <label>Email</label>
+                                                    <input id="email" type="text" class="form-control"
+                                                        placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
+                                                    <label>Loại hình công ty</label>
+                                                    <input id="typeCompany" type="text" class="form-control"
+                                                        placeholder="Loại hình công ty">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pr-0">
+                                                    <div class="form-group form-group-default">
+                                                        <label>Số lượng nhân viên</label>
+                                                        <input id="amount" type="text" class="form-control"
+                                                            placeholder="Số lượng nhân viên">
+                                                    </div>
+                                                </div>
+                                            <div class="col-md-6">
+                                                    <div class="form-group form-group-default">
+                                                            <!-- Super Admin không cần kiểm soát -->
+                                                            <label>Gói công ty</label>
+                                                            <select name="" id="locationCompany" class="form-control">
+                                                                <option value="">Cơ bản</option>
+                                                                <option value="">Tiêu chuẩn</option>
+                                                                <option value="">Nâng cao</option>
+                                                            </select>
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button type="button" id="addRowButton" class="btn btn-primary">Thêm công ty</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="table-responsive">
-                            <table id="add-row" class="display table table-striped table-hover table-head-bg-primary" >
-                                <thead>
-                                    <tr>
-                                        <th>Tên công ty</th>
-                                        <th>Số lượng nhân viên</th>
-                                        <th>Trụ sở công ty</th>
-                                        <th>Số điện thoại</th>
-                                        <th style="width: 10%">Action</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Classify</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
+                    <div class="table-responsive">
+                        <table id="add-row" class="display table table-striped table-hover table-head-bg-primary">
+                            <thead>
+                                <tr>
+
+                                    <th>Tên công ty</th>
+                                    <th>Gói</th>
+                                    <th>Số lượng nhân viên</th>
+                                    <th>Trụ sở công ty</th>
+                                    <th>Số điện thoại</th>
+                                    <th style="width: 10%">Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>package</th>
+                                    <th>Classify</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
                                     <td>MQ Solutions</td>
-                                    <td>50 người</td>
+                                    <td class="package basic">Cơ bản</td>
+                                    <td>40 người</td>
                                     <td>12 Khuất duy tiến , Hà Nội</td>
                                     <td>0123456789</td>
                                     <td>
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="detail-company.html"><i class="fa fa-edit"></i></a>
+                                            </button>
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ABCDXYZ</td>
+                                    <td class="package standard">Tiêu chuẩn</td>
+                                    <td>20 người</td>
+                                    <td>12 Khuất duy tiến , Hà Nội</td>
+                                    <td>0123456789</td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="detail-company.html"><i class="fa fa-edit"></i></a>
+                                            </button>
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                        <td>XYZCBA</td>
+                                        <td class="package advanced">Nâng cao</td>
+                                        <td>80 người</td>
+                                        <td>12 Khuất duy tiến , Hà Nội</td>
+                                        <td>0123456789</td>
+                                        <td>
                                             <div class="form-button-action">
                                                 <button type="button" data-toggle="tooltip" title=""
                                                     class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
@@ -124,125 +203,130 @@
                                                 </button>
                                             </div>
                                         </td>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 {% endblock content %}
 
 {% block javascripts %}
 
-	<script src="/static/assets/js/setting-demo2.js"></script>
-	<script >
-		$(document).ready(function() {
-			// Add Row
-			$('#add-row').DataTable({
-				"pageLength": 10,
-				initComplete: function () {
-					this.api().columns().every( function () {
-						var column = this;
-						var select = $('<select class="form-control"><option value=""></option></select>')
-						.appendTo( $(column.footer()).empty() )
-						.on( 'change', function () {
-							var val = $.fn.dataTable.util.escapeRegex(
-								$(this).val()
-								);
+<script src="/static/assets/js/setting-demo2.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add Row
+        $('#add-row').DataTable({
+            "pageLength": 10,
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $(
+                            '<select class="form-control"><option value=""></option></select>'
+                            )
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
 
-							column
-							.search( val ? '^'+val+'$' : '', true, false )
-							.draw();
-						} );
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
 
-						column.data().unique().sort().each( function ( d, j ) {
-							select.append( '<option value="'+d+'">'+d+'</option>' )
-						} );
-					} );
-				}
-			});
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d +
+                            '</option>')
+                    });
+                });
+            }
+        });
 
-			// $('#add-row tbody').on( 'click', 'tr', function () {
-		 //        $(this).toggleClass('selected');
-		 //    } );
-		 
-		 //    $('#selectRowModal').click( function () {
-		 //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
-		 //    } );
+        // $('#add-row tbody').on( 'click', 'tr', function () {
+        //        $(this).toggleClass('selected');
+        //    } );
+
+        //    $('#selectRowModal').click( function () {
+        //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
+        //    } );
 
 
-			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+        var action =
+            '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
-			$('#addRowButton').click(function() {
-				$('#add-row').dataTable().fnAddData([
-					$("#addName").val(),
-					$("#addPosition").val(),
-					$("#addOffice").val(),
-					action
-					]);
-				$('#addRowModal').modal('hide');
+        $('#addRowButton').click(function () {
+            $('#add-row').dataTable().fnAddData([
+                $("#addName").val(),
+                $("#addPosition").val(),
+                $("#addOffice").val(),
+                action
+            ]);
+            $('#addRowModal').modal('hide');
 
-			});
-		});
-	</script>
+        });
+    });
+</script>
 
 <script>
-        //== Class definition
-        var SweetAlert2Demo = function () {
-            //== Demos
-            var initDemos = function () {
-                $('#alert_demo_8').click(function (e) {
-                    swal({
-                        title: 'Bạn có chắc không?',
-                        type: 'warning',
-                        buttons: {
-                            cancel: {
-                                visible: true,
-                                text: 'HỦY BỎ',
-                                className: 'btn btn-danger'
-                            },
-                            confirm: {
-                                text: 'ĐỒNG Ý , XÓA',
-                                className: 'btn btn-success'
+    //== Class definition
+    var SweetAlert2Demo = function () {
+        //== Demos
+        var initDemos = function () {
+            $('#alert_demo_8').click(function (e) {
+                swal({
+                    title: 'Bạn có chắc không?',
+                    type: 'warning',
+                    buttons: {
+                        cancel: {
+                            visible: true,
+                            text: 'HỦY BỎ',
+                            className: 'btn btn-danger'
+                        },
+                        confirm: {
+                            text: 'ĐỒNG Ý , XÓA',
+                            className: 'btn btn-success'
+                        }
+                    }
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        swal("Xóa thông tin thành công", {
+                            icon: "success",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
                             }
-                        }
-                    }).then((willDelete) => {
-                        if (willDelete) {
-                            swal("Xóa thông tin thành công", {
-                                icon: "success",
-                                buttons: {
-                                    confirm: {
-                                        className: 'btn btn-success'
-                                    }
+                        });
+                    } else {
+                        swal("Bạn đã hủy tác vụ xóa", {
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
                                 }
-                            });
-                        } else {
-                            swal("Bạn đã hủy tác vụ xóa", {
-                                buttons: {
-                                    confirm: {
-                                        className: 'btn btn-success'
-                                    }
-                                }
-                            });
-                        }
-                    });
-                })
-    
-            };
-            return {
-                //== Init
-                init: function () {
-                    initDemos();
-                },
-            };
-        }();
-    
-        //== Class Initialization
-        jQuery(document).ready(function () {
-            SweetAlert2Demo.init();
-        });
-    </script>
+                            }
+                        });
+                    }
+                });
+            })
+
+        };
+        return {
+            //== Init
+            init: function () {
+                initDemos();
+            },
+        };
+    }();
+
+    //== Class Initialization
+    jQuery(document).ready(function () {
+        SweetAlert2Demo.init();
+    });
+</script>
 {% endblock javascripts %}

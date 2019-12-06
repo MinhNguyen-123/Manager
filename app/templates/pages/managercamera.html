@@ -8,19 +8,19 @@
 
 {% block content %}
 <style>
-    .flaticon-success{
+    .flaticon-success {
         color: green;
         font-weight: bold;
     }
 
-    .flaticon-error{
-        color:grey;
+    .flaticon-error {
+        color: grey;
         font-weight: bold;
     }
 
     .fix-right-mqn {
-            margin-right: 10px;
-        }
+        margin-right: 10px;
+    }
 </style>
 
 <div class="page-inner">
@@ -36,11 +36,11 @@
                             Thêm camera
                         </button>
                         <button class="btn btn-primary btn-round">
-                                <span class="btn-label">
-                                    <i class="fa fa-print"></i>
-                                </span>
-                                Print
-                            </button>
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
+                        </button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -57,23 +57,28 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="post" id="exampleValidation" novalidate="novalidate">
                                         <div class="row">
-                                            <div class="col-sm-6 pr-0">
-                                                <div class="form-group form-group-default">
-                                                    <label>Camera ID</label>
-                                                    <input id="CameraId" type="text" class="form-control"
-                                                        placeholder="Camera ID">
+                                            <div class="col-sm-6">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="cameraId">Camera ID</label>
+                                                    <input type="text" class="form-control" id="cameraId"
+                                                        name="cameraId" placeholder="Camera ID" required=""
+                                                        aria-invalid="true">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 pr-0">
-                                                <div class="form-group form-group-default">
-                                                    <label>Địa chỉ ID</label>
-                                                    <input id="AddressId" type="text" class="form-control"
-                                                        placeholder="Địa chỉ ID">
+                                            <div class="col-sm-6">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="addressId">Địa chỉ ID</label>
+                                                    <input type="text" class="form-control" id="addressId"
+                                                        name="addressId" placeholder="Địa chỉ ID" required=""
+                                                        aria-invalid="true">
+
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 pr-0">
+                                            <div class="col-sm-6">
                                                 <div class="form-group form-group-default">
                                                     <label>Tên Công ty</label>
                                                     <select name="" id="nameCompany" class="form-control">
@@ -82,17 +87,17 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 pr-0">
-                                                    <div class="form-group form-group-default">
-                                                        <!-- Super Admin không cần kiểm soát -->
-                                                        <label>Vị trí công ty</label>
-                                                        <select name="" id="locationCompany" class="form-control">
-                                                            <option value="">12 khuất duy tiến</option>
-                                                            <option value="">10 Minh Khai</option>
-                                                        </select>
-                                                    </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-group-default">
+                                                    <!-- Super Admin không cần kiểm soát -->
+                                                    <label>Vị trí công ty</label>
+                                                    <select name="" id="locationCompany" class="form-control">
+                                                        <option value="">12 khuất duy tiến</option>
+                                                        <option value="">10 Minh Khai</option>
+                                                    </select>
                                                 </div>
-                                            <div class="col-sm-12 pr-0">
+                                            </div>
+                                            <div class="col-sm-12">
                                                 <div class="form-group form-group-default">
                                                     <label>Trạng thái</label>
                                                     <select name="" id="status" class="form-control">
@@ -102,13 +107,14 @@
                                                 </div>
                                             </div>
 
-
+                                        </div>
+                                        <div class="pull-right mt-3 mb-3">
+                                            <input type="submit" name="" value="Thêm camera" class="btn btn-success">
+                                            <input type="reset" name="" value="Hủy Bỏ" class="btn btn-danger">
                                         </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer no-bd">
-                                    <button type="button" id="addRowButton" class="btn btn-primary">Thêm camera</button>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -140,30 +146,30 @@
                                             </button>
                                             <button type="button" data-toggle="tooltip" title=""
                                                 class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                                <i id="delete" class="fa fa-times"></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                        <td>01234569</td>
-                                        <th>21452455</th>
-                                        <td>Mq solutions</td>
-                                        <td>21:33:03 17/12/2019</td>
-                                        <td><span class="flaticon-error"> Offline</span> </td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title=""
-                                                    class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <a href="detail-camera.html"><i class="fa fa-edit"></i></a>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title=""
-                                                    class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i id="alert_demo_8" class="fa fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <td>01234569</td>
+                                    <th>21452455</th>
+                                    <td>Mq solutions</td>
+                                    <td>21:33:03 17/12/2019</td>
+                                    <td><span class="flaticon-error"> Offline</span> </td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="detail-camera.html"><i class="fa fa-edit"></i></a>
+                                            </button>
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <i id="delete" class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -208,13 +214,6 @@
             }
         });
 
-        // $('#add-row tbody').on( 'click', 'tr', function () {
-        //        $(this).toggleClass('selected');
-        //    } );
-
-        //    $('#selectRowModal').click( function () {
-        //        alert( $('#add-row').DataTable().rows('.selected').data().length +' row(s) selected' );
-        //    } );
 
 
         var action =
@@ -232,63 +231,63 @@
         });
     });
 </script>
-
 <script>
-        //== Class definition
-        var SweetAlert2Demo = function () {
-            //== Demos
-            var initDemos = function () {
-                $('#alert_demo_8').click(function (e) {
-                    swal({
-                        title: 'Bạn có chắc không?',
-                        type: 'warning',
-                        buttons: {
-                            cancel: {
-                                visible: true,
-                                text: 'HỦY BỎ',
-                                className: 'btn btn-danger'
-                            },
-                            confirm: {
-                                text: 'ĐỒNG Ý , XÓA',
-                                className: 'btn btn-success'
+    // Click delete
+    //== Class definition
+    var SweetAlert2Demo = function () {
+        //== Demos
+        var initDemos = function () {
+            $('#delete').click(function (e) {
+                swal({
+                    title: 'Bạn có chắc không?',
+                    type: 'warning',
+                    buttons: {
+                        cancel: {
+                            visible: true,
+                            text: 'HỦY BỎ',
+                            className: 'btn btn-danger'
+                        },
+                        confirm: {
+                            text: 'ĐỒNG Ý , XÓA',
+                            className: 'btn btn-success'
+                        }
+                    }
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        swal("Xóa thông tin thành công", {
+                            icon: "success",
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
                             }
-                        }
-                    }).then((willDelete) => {
-                        if (willDelete) {
-                            swal("Xóa thông tin thành công", {
-                                icon: "success",
-                                buttons: {
-                                    confirm: {
-                                        className: 'btn btn-success'
-                                    }
+                        });
+                    } else {
+                        swal("Bạn đã hủy tác vụ xóa", {
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
                                 }
-                            });
-                        } else {
-                            swal("Bạn đã hủy tác vụ xóa", {
-                                buttons: {
-                                    confirm: {
-                                        className: 'btn btn-success'
-                                    }
-                                }
-                            });
-                        }
-                    });
-                })
-    
-            };
-    
-            return {
-                //== Init
-                init: function () {
-                    initDemos();
-                },
-            };
-        }();
-    
-        //== Class Initialization
-        jQuery(document).ready(function () {
-            SweetAlert2Demo.init();
-        });
-    </script>
+                            }
+                        });
+                    }
+                });
+            })
+
+        };
+
+        return {
+            //== Init
+            init: function () {
+                initDemos();
+            },
+        };
+    }();
+
+    //== Class Initialization
+    jQuery(document).ready(function () {
+        SweetAlert2Demo.init();
+    });
+</script>
 
 {% endblock javascripts %}

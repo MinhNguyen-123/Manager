@@ -12,7 +12,7 @@
         margin-right: 10px;
     }
 
-    .timepicker{
+    .timepicker {
         position: relative;
     }
 </style>
@@ -50,43 +50,48 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="post" id="exampleValidation" novalidate="novalidate">
                                         <div class="row">
-                                            <div class="col-sm-6 pr-0">
-                                                <div class="form-group form-group-default">
-                                                    <label>Tên chi nhánh</label>
-                                                    <input id="nameBranch" name="namebranch" type="text"
-                                                        class="form-control" placeholder="Tên chi nhánh">
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="nameBrach">Tên chi nhánh</label>
+                                                    <input type="text" class="form-control" id="nameBrach"
+                                                        name="nameBrach" placeholder="Tên chi nhánh" required=""
+                                                        aria-invalid="true">
+
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <div class="form-group form-group-default">
-                                                    <label>Địa chỉ chi nhánh</label>
-                                                    <input id="addressId" name="addressid" type="text"
-                                                        class="form-control" placeholder="Địa chỉ chi nhánh">
+                                                <div class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="addressBrach">Địa chỉ chi nhánh</label>
+                                                    <input type="text" class="form-control" id="addressBrach"
+                                                        name="addressBrach" placeholder="Địa chỉ chi nhánh" required=""
+                                                        aria-invalid="true">
+
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 pr-0">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Thời gian bắt đầu</label>
-                                                        <input id="checkin" name="namebranch" type="time"
-                                                            class="form-control timepicker" placeholder="Thời gian bắt đầu">
-                                                    </div>
-                                                </div>
                                             <div class="col-sm-6">
-                                                <div class="form-group form-group-default">
-                                                    <label>Thời gian kết thúc</label>
-                                                    <input id="datetime" name="checkout" type="time"
-                                                        class="form-control" placeholder="Thời gian kết thúc">
-                                                </div>
+                                                    <div class="form-group form-group-default vorm-show-validation">
+                                                            <label>Thời gian bắt đầu</label>
+                                                            <input type="text" class="form-control" id="checkin" name="checkin"
+                                                               placeholder="Thời gian bắt đầu" required="">
+                                                        </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                    <div class="form-group form-group-default vorm-show-validation">
+                                                            <label>Thời gian kết thúc</label>
+                                                            <input type="text" class="form-control" id="checkout" name="checkout"
+                                                               placeholder="Thời gian kết thúc" required="">
+                                                        </div>
                                             </div>
                                         </div>
+                                        <div class="pull-right mt-3 mb-3">
+                                                <input type="submit" name="" value="Thêm chi nhánh" class="btn btn-success">
+                                                <input type="reset" name="" value="Hủy Bỏ" class="btn btn-danger">
+                                            </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer no-bd">
-                                    <button type="button" id="addRowButton" class="btn btn-primary">Thêm chi
-                                        nhánh</button>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -117,8 +122,8 @@
                                     <td>MQ Viet nam</td>
                                     <td>12 Khuất Duy tiến , hà nội</td>
                                     <td>MQ solutions</td>
-                                    <th>8h00</th>
-                                    <th>17h00</th>
+                                    <th>8:00 AM</th>
+                                    <th>17:00 PM</th>
                                     <td>
                                         <div class="form-button-action">
                                             <button type="button" data-toggle="tooltip" title=""
@@ -127,7 +132,7 @@
                                             </button>
                                             <button type="button" data-toggle="tooltip" title=""
                                                 class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                                <i id="delete" class="fa fa-times"></i>
                                             </button>
                                         </div>
                                     </td>
@@ -136,8 +141,8 @@
                                     <td>MQ Viet nam</td>
                                     <td>15 Xuân Diệu , Hồ Chí Minh</td>
                                     <td>MQ solutions</td>
-                                    <th>8h00</th>
-                                    <th>17h00</th>
+                                    <th>8:00 AM</th>
+                                    <th>17:00 PM</th>
                                     <td>
                                         <div class="form-button-action">
                                             <button type="button" data-toggle="tooltip" title=""
@@ -146,7 +151,7 @@
                                             </button>
                                             <button type="button" data-toggle="tooltip" title=""
                                                 class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                                <i id="delete" class="fa fa-times"></i>
                                             </button>
                                         </div>
                                     </td>
@@ -221,61 +226,5 @@
     });
 </script>
 
-<script>
-    //== Class definition
-    var SweetAlert2Demo = function () {
-        //== Demos
-        var initDemos = function () {
-            $('#alert_demo_8').click(function (e) {
-                swal({
-                    title: 'Bạn có chắc không?',
-                    type: 'warning',
-                    buttons: {
-                        cancel: {
-                            visible: true,
-                            text: 'HỦY BỎ',
-                            className: 'btn btn-danger'
-                        },
-                        confirm: {
-                            text: 'ĐỒNG Ý , XÓA',
-                            className: 'btn btn-success'
-                        }
-                    }
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        swal("Xóa thông tin thành công", {
-                            icon: "success",
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    } else {
-                        swal("Bạn đã hủy tác vụ xóa", {
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    }
-                });
-            })
 
-        };
-
-        return {
-            //== Init
-            init: function () {
-                initDemos();
-            },
-        };
-    }();
-
-    //== Class Initialization
-    jQuery(document).ready(function () {
-        SweetAlert2Demo.init();
-    });
-</script>
 {% endblock javascripts %}

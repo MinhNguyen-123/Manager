@@ -107,52 +107,60 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form id="exampleValidation" novalidate="novalidate" method="post" enctype="multipart/form-data">
                                 <div class="row mt-3">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-group-default">
-                                            <label>Mã nhân viên</label>
-                                            <input type="Mã nhân viên" class="form-control" name="email"
-                                                placeholder="Mã nhân viên" value="15110678">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="codeMenber">Mã nhân viên</label>
+                                            <input type="number" class="form-control" id="codeMenber" name="codeMenber"
+                                                placeholder="Mã nhân viên" value="15110678" required=""
+                                                aria-invalid="true">
+
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-group-default">
-                                            <label>Họ và tên</label>
-                                            <input type="text" class="form-control" name="name" placeholder="Họ và tên"
-                                                value="Nguyễn Quang Minh">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="username">Họ và Tên</label>
+                                            <input type="text" class="form-control" id="username" name="username"
+                                                placeholder="Họ và Tên" value="Nguyễn Quang Minh" required=""
+                                                aria-invalid="true">
+
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group form-group-default">
-                                            <label>Tài khoản</label>
-                                            <input type="text" class="form-control" name="name" placeholder="Tài khoản"
-                                                value="quangminh" disabled>
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="name">Tài khoản</label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                placeholder="Tài khoản" value="quangminh" required=""
+                                                aria-invalid="true" disabled>
+
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group form-group-default">
                                             <label>Phân quyền</label>
-                                            <select name="" id="" class="form-control">
+                                            <select name="positionUser" id="Position" class="form-control">
                                                 <option value="">Quản lý</option>
                                                 <option value="">Nhân viên</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group form-group-default">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" name="email" placeholder="Name"
-                                                value="quangminh28897@gmail.com">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="email">Email </label>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                value="nguyen.quang.minh@solutions.com.vn" placeholder="Enter Email"
+                                                required="">
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-4">
-                                        <div class="form-group form-group-default">
+                                        <div class="form-group form-group-default vorm-show-validation">
                                             <label>Ngày sinh nhật</label>
-                                            <input type="text" class="form-control" id="datepicker" name="datepicker"
-                                                value="03/21/1998" placeholder="Ngày sinh nhật">
+                                            <input type="text" class="form-control" id="birth" name="birth"
+                                                value="03/21/1998" placeholder="Ngày sinh nhật" required="">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -164,35 +172,42 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group form-group-default">
-                                            <label>Số điện thoại</label>
-                                            <input type="text" class="form-control" value="0345736211" name="phone"
-                                                placeholder="Số điện thoại">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="phoneNumber">Số điện thoại</label>
+                                            <input type="number" class="form-control" id="phoneNumber"
+                                                value="0345736211" name="phoneNumber" placeholder="Số điện thoại"
+                                                required="" aria-invalid="true">
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-group-default">
-                                            <label>Chức vụ công ty</label>
-                                            <input type="text" class="form-control" value="Lập trình viên"
-                                                name="position" placeholder="Chức vụ công ty">
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="positionCompany">Chức vụ công ty</label>
+                                            <input type="text" class="form-control" id="positionCompany"
+                                                value="Lập trình viên" name="positionCompany"
+                                                placeholder="Chức vụ công ty" required="" aria-invalid="true">
+
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group form-group-default">
-                                            <label>Tên công ty</label>
-                                            <input type="text" class="form-control" value="MQ Solutions"
-                                                name="companyname" placeholder="Tên công ty">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="nameCompany">Tên công ty</label>
+                                            <input type="text" class="form-control" id="nameCompany"
+                                                value="MQ Solutions" name="nameCompany" placeholder="Tên công ty"
+                                                required="" aria-invalid="true">
+
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group form-group-default">
-                                            <label>Tên Chi nhánh</label>
-                                            <input type="text" class="form-control"
-                                                value="MQ ( 12 khuất duy tiến , Thanh Xuân , Hà Nội)"
-                                                name="companybrach" placeholder="Tên Chi nhánh">
+                                        <div class="form-group form-group-default form-show-validation">
+                                            <label for="companyBrach">Chi nhánh công ty</label>
+                                            <input type="text" class="form-control" id="companyBrach"
+                                                name="companyBrach" value="12 khuất duy tiến , thanh xuân , Hà Nội"
+                                                placeholder="Chi nhánh công ty" required="" aria-invalid="true">
+
                                         </div>
                                     </div>
                                 </div>
@@ -210,14 +225,15 @@
                                     <div class="col-md-12">
                                         <div class="form-group form-group-default">
                                             <label>Ảnh đại diện</label>
-                                            <input type="file" id="avataName" name="avataName[]" class="form-control" multiple />
+                                            <input type="file" id="avataName" name="avataName[]" class="form-control"
+                                                multiple required />
                                         </div>
                                     </div>
                                 </div>
                                 <div id="image_preview"></div>
                                 <div class="text-right mt-3 mb-3">
-                                    <button class="btn btn-success">Lưu thông tin</button>
-                                    <button type="reset" class="btn btn-danger">Hủy Bỏ</button>
+                                    <input type="submit" name="" value="Lưu thông tin" class="btn btn-success">
+                                    <input type="reset" class="btn btn-danger" value="Hủy Bỏ">
                                 </div>
                             </form>
                         </div>
@@ -265,32 +281,35 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                            <form action="" method="post">
+                            <form id="formPassWordPros" novalidate="novalidate" method="post">
                                 <div class="row md-12">
-                                    <div class="col-md-4">
-                                        <div class="form-group form-group-default">
-                                            <label>Mật khẩu hiện tại</label>
-                                            <input id="password" type="password" class="form-control" name="password"
-                                                placeholder="Mật khẩu hiện tại" value="Lương Hồng Quân">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-group-default form-show-validation has-success">
+                                            <label for="passwordOld"></label>Mật khẩu hiện tại</label>
+                                            <input type="password" class="form-control" id="passwordOld"
+                                                value="1111111111" name="passwordOld" placeholder="Mật khẩu hiện tại"
+                                                required="">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group form-group-default">
-                                            <label>Mật khẩu mới</label>
-                                            <input id="newPassword" type="password" class="form-control"
-                                                name="newpassword" placeholder="Mật khẩu mới">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-group-default form-show-validation has-error">
+                                            <label for="password"></label>Mật khẩu mới</label>
+                                            <input type="password" class="form-control" id="password" name="password"
+                                                placeholder="Mật khẩu mới" required="">
+
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group form-group-default">
-                                            <label>Xác nhận mật khẩu</label>
-                                            <input id="confirmPassword" type="password" class="form-control"
-                                                name="confirmpassword" placeholder="Xác nhận mật khẩu">
+                                    <div class="col-sm-4">
+                                        <div class="form-group form-group-default form-show-validation has-error">
+                                            <label for="confirmpassword"></label>Xác nhận mật khẩu</label>
+                                            <input type="password" class="form-control" id="confirmpassword"
+                                                name="confirmpassword" placeholder="Xác nhận mật khẩu" required="">
                                         </div>
                                     </div>
+
                                 </div>
-                                <div class="text-right mt-3 mb-3">
-                                    <button class="btn btn-success">Đổi mật khẩu</button>
+                                <div class="pull-right mt-3 mb-3">
+                                    <input type="submit" name="" value="Đổi mật khẩu" class="btn btn-success">
                                 </div>
                             </form>
                         </div>
@@ -321,8 +340,8 @@
                                 <span class="btn-label just-icon"><i class="flaticon-facebook"></i> </span>
                             </a>
                         </div>
-                        <div class="desc">Frontend Developer</div>
-                        <div class="desc">MQ Solutions( 12 khuất duy tiến , Thanh Xuân , Hà Nội)</div>
+                        <div class="desc"><i class="fa fa-star"></i> Lập trình viên</div>
+                        <div class="desc"><i class="fa fa-map"></i> MQ Solutions( 12 khuất duy tiến , Thanh Xuân , Hà Nội)</div>
                         <div class="desc"><span class="fa fa-phone"> 0345736211</span> <span class="fa fa-envelope">
                                 quangminh28897@gmail.com</span></div>
                     </div>
@@ -550,61 +569,7 @@
 </script>
 
 <script>
-    //== Class definition
-    var SweetAlert2Demo = function () {
-        //== Demos
-        var initDemos = function () {
-            $('#alert_demo_8').dblclick(function (e) {
-                swal({
-                    title: 'Bạn có chắc không?',
-                    type: 'warning',
-                    buttons: {
-                        cancel: {
-                            visible: true,
-                            text: 'HỦY BỎ',
-                            className: 'btn btn-danger'
-                        },
-                        confirm: {
-                            text: 'ĐỒNG Ý , XÓA',
-                            className: 'btn btn-success'
-                        }
-                    }
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        swal("Xóa thông tin thành công", {
-                            icon: "success",
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    } else {
-                        swal("Bạn đã hủy tác vụ xóa", {
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    }
-                });
-            })
-
-        };
-
-        return {
-            //== Init
-            init: function () {
-                initDemos();
-            },
-        };
-    }();
-
-    //== Class Initialization
-    jQuery(document).ready(function () {
-        SweetAlert2Demo.init();
-    });
+ 
 </script>
 <!-- Điều hướng tab -->
 <script>
@@ -643,4 +608,5 @@
         }
     });
 </script>
+
 {% endblock javascripts %}

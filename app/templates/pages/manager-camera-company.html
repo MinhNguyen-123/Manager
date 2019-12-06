@@ -53,30 +53,43 @@
                             <div class="modal-content">
                                 <div class="modal-header no-bd">
                                     <h5 class="modal-title">
-                                        <span class="fw-mediumbold">Thông tin camera</span>
+                                        <span class="fw-mediumbold">Thông tin vị trí lắp đặt camera</span>
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="post" id="exampleValidation" novalidate="novalidate">
                                         <div class="row">
-                                            <div class="col-sm-6 pr-0">
-                                                <div class="form-group form-group-default">
-                                                    <label>Camera ID</label>
-                                                    <input id="CameraId" type="text" class="form-control"
-                                                        placeholder="Camera ID">
+                                            <div class="col-sm-6">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="cameraId">Camera ID</label>
+                                                    <input type="text" class="form-control" id="cameraId"
+                                                        name="cameraId" placeholder="Camera ID" required=""
+                                                        aria-invalid="true">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <div class="form-group form-group-default">
-                                                    <label>Địa chỉ ID</label>
-                                                    <input id="addessIdCamera" type="text" class="form-control"
-                                                        placeholder="Địa chỉ ID">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="addressId">Địa chỉ ID</label>
+                                                    <input type="text" class="form-control" id="addressId"
+                                                        name="addressId" placeholder="Địa chỉ ID" required=""
+                                                        aria-invalid="true">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 pr-0">
+                                            <div class="col-sm-12">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="locationIntall">Khu vực lắp đặt</label>
+                                                    <input type="text" class="form-control" id="locationIntall"
+                                                        name="locationIntall" placeholder="Khu vực lắp đặt" required=""
+                                                        aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
                                                 <div class="form-group form-group-default">
                                                     <label>Chi nhánh lắp đặt</label>
                                                     <select name="" id="branchInstall" class="form-control">
@@ -89,27 +102,19 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group form-group-default">
-                                                    <label>Khu vực lắp đặt</label>
-                                                    <input id="areaInstall" type="text" class="form-control"
-                                                        placeholder="Khu vực lắp đặt">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group form-group-default">
                                                     <label>Trạng thái</label>
                                                     <select name="" id="status" class="form-control">
-                                                        <option value="">Active</option>
-                                                        <option value="">Not active</option>
+                                                        <option value="">Online</option>
+                                                        <option value="">Offline</option>
                                                     </select>
                                                 </div>
                                             </div>
-
-
+                                        </div>
+                                        <div class="pull-right mt-3 mb-3">
+                                            <input type="submit" name="" value="Thêm camera" class="btn btn-success">
+                                            <input type="reset" name="" value="Hủy Bỏ" class="btn btn-danger">
                                         </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer no-bd">
-                                    <button type="button" id="addRowButton" class="btn btn-primary">Thêm Camera</button>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +156,7 @@
                                             </button>
                                             <button type="button" data-toggle="tooltip" title=""
                                                 class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                                <i id="delete" class="fa fa-times"></i>
                                             </button>
                                         </div>
                                     </td>
@@ -170,7 +175,7 @@
                                             </button>
                                             <button type="button" data-toggle="tooltip" title=""
                                                 class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                                <i id="delete" class="fa fa-times"></i>
                                             </button>
                                         </div>
                                     </td>
@@ -243,61 +248,5 @@
         });
     });
 </script>
-<script>
-    //== Class definition
-    var SweetAlert2Demo = function () {
-        //== Demos
-        var initDemos = function () {
-            $('#alert_demo_8').click(function (e) {
-                swal({
-                    title: 'Bạn có chắc không?',
-                    type: 'warning',
-                    buttons: {
-                        cancel: {
-                            visible: true,
-                            text: 'HỦY BỎ',
-                            className: 'btn btn-danger'
-                        },
-                        confirm: {
-                            text: 'ĐỒNG Ý , XÓA',
-                            className: 'btn btn-success'
-                        }
-                    }
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        swal("Xóa thông tin thành công", {
-                            icon: "success",
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    } else {
-                        swal("Bạn đã hủy tác vụ xóa", {
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    }
-                });
-            })
 
-        };
-
-        return {
-            //== Init
-            init: function () {
-                initDemos();
-            },
-        };
-    }();
-
-    //== Class Initialization
-    jQuery(document).ready(function () {
-        SweetAlert2Demo.init();
-    });
-</script>
 {% endblock javascripts %}

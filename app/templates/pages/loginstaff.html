@@ -107,76 +107,89 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form method="post" id="exampleValidation" novalidate="novalidate">
                                     <div class="row">
-                                        <div class="col-sm-12 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Tài khoản</label>
-                                                <input id="CameraId" type="text" class="form-control"
-                                                    placeholder="Tài khoản">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="name">Tài khoản</label>
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                    placeholder="Tài khoản" required="" aria-invalid="true">
+
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Mật khẩu</label>
-                                                <input id="AddressId" type="text" class="form-control"
-                                                    placeholder="Mật khẩu">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="password"></label>Mật khẩu</label>
+                                                <input type="password" class="form-control" id="password"
+                                                    name="password" placeholder="Mật khẩu" required="">
+
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Xác nhận mật khẩu</label>
-                                                <input id="CameraId" type="text" class="form-control"
-                                                    placeholder="Xác nhận mật khẩu">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="confirmpassword"></label>Nhập lại mật khẩu</label>
+                                                <input type="password" class="form-control" id="confirmpassword"
+                                                    name="confirmpassword" placeholder="Nhập lại mật khẩu" required="">
+
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Họ và tên</label>
-                                                <input id="AddressId" type="text" class="form-control"
-                                                    placeholder="Họ và tên">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="codeMenber">Mã nhân viên</label>
+                                                <input type="number" class="form-control" id="codeMenber"
+                                                    name="codeMenber" placeholder="Mã nhân viên" required=""
+                                                    aria-invalid="true">
+
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Mã nhân viên</label>
-                                                <input id="CameraId" type="text" class="form-control"
-                                                    placeholder="Mã nhân viên">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="username">Họ và Tên</label>
+                                                <input type="text" class="form-control" id="username" name="username"
+                                                    placeholder="Họ và Tên" required="" aria-invalid="true">
+
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Chức vụ công ty</label>
-                                                <input id="AddressId" type="text" class="form-control"
-                                                    placeholder="Chức vụ công ty">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Chi nhánh công ty</label>
-                                                <input id="CameraId" type="text" class="form-control"
-                                                    placeholder="Chi nhánh công ty">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Địa chỉ công ty</label>
-                                                <input id="AddressId" type="text" class="form-control"
-                                                    placeholder="Địa chỉ công ty">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 pr-0">
-                                            <div class="form-group form-group-default">
-                                                <label>Email</label>
-                                                <input id="AddressId" type="text" class="form-control"
-                                                    placeholder="Email">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="nameCompany">Tên công ty</label>
+                                                <input type="text" class="form-control" id="nameCompany"
+                                                    name="nameCompany" placeholder="Tên công ty" required=""
+                                                    aria-invalid="true">
+
                                             </div>
                                         </div>
 
-                                        <div class="container">
-                                            <button type="button" id="addRowButton"
-                                                class="btn btn-primary pull-right">Tạo tài khoản</button>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="addressCompany">Địa chỉ công ty</label>
+                                                <input type="text" class="form-control" id="addressCompany"
+                                                    name="addressCompany" placeholder="Địa chỉ công ty" required=""
+                                                    aria-invalid="true">
+
+                                            </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="chucvu">Chức vụ công ty</label>
+                                                <input type="text" class="form-control" id="chucvu" name="chucvu"
+                                                    placeholder="Chức vụ công ty" required="" aria-invalid="true">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-group-default form-show-validation has-error">
+                                                <label for="email">Email </label>
+                                                <input type="email" class="form-control" id="email"
+                                                    placeholder="Enter Email" required="">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="text-right mt-3 mb-3">
+                                        <input type="submit" name="" value="Thêm người dùng" class="btn btn-success">
+                                        <input type="reset" name="" value="Hủy Bỏ" class="btn btn-danger">
                                     </div>
                                 </form>
                             </div>
@@ -194,5 +207,29 @@
 {% block javascripts %}
 
 <script src="/assets/js/setting-demo2.js"></script>
-
+<script>
+    $("#exampleValidation").validate({
+        validClass: "success",
+        rules: {
+            gender: {
+                required: true
+            },
+            confirmpassword: {
+                equalTo: "#password"
+            },
+            birth: {
+                date: true
+            },
+            uploadImg: {
+                required: true,
+            },
+        },
+        highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function (element) {
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+    });
+</script>
 {% endblock javascripts %}

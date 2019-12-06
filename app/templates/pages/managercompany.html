@@ -13,7 +13,7 @@
     }
 
     .package {
-        
+
         color: white;
         padding: 10px 10px !important;
         font-weight: bold;
@@ -21,9 +21,10 @@
         text-align: center;
     }
 
-    .basic{
+    .basic {
         background: #575962;
     }
+
     .standard {
         background: #ffc107;
     }
@@ -59,67 +60,82 @@
                             <div class="modal-content">
                                 <div class="modal-header no-bd">
                                     <h5 class="modal-title">
-                                        <span class="fw-mediumbold">Thông tin công</span>
+                                        <span class="fw-mediumbold">Thông tin công ty</span>
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="post" id="exampleValidation" novalidate="novalidate">
                                         <div class="row">
                                             <div class="col-sm-6 pr-0">
-                                                <div class="form-group form-group-default">
-                                                    <label>Tên công ty</label>
-                                                    <input id="nameCompany" type="text" class="form-control"
-                                                        placeholder="Tên công ty">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="nameCompany">Tên công ty</label>
+                                                    <input type="text" class="form-control" id="nameCompany"
+                                                        name="nameCompany" placeholder="Tên công ty" required=""
+                                                        aria-invalid="true">
+
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <div class="form-group form-group-default">
-                                                    <label>Số điện thoại</label>
-                                                    <input id="phoneNumber" type="text" class="form-control"
-                                                        placeholder="Số điện thoại">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="phoneNumber">Số điện thoại</label>
+                                                    <input type="number" class="form-control" id="phoneNumber"
+                                                        name="phoneNumber" placeholder="Số điện thoại" required=""
+                                                        aria-invalid="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 pr-0">
-                                                <div class="form-group form-group-default">
-                                                    <label>Email</label>
-                                                    <input id="email" type="text" class="form-control"
-                                                        placeholder="Email">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="email">Email </label>
+                                                    <input type="email" class="form-control" id="email"
+                                                        placeholder="Enter Email" required="">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="typeCompany">Loại hinh công ty</label>
+                                                    <input type="text" class="form-control" id="typeCompany"
+                                                        name="typeCompany" placeholder="Loại hinh công ty" required=""
+                                                        aria-invalid="true">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pr-0">
+                                                <div
+                                                    class="form-group form-group-default form-show-validation has-error">
+                                                    <label for="totalMenber">Số lượng nhân viên</label>
+                                                    <input type="number" class="form-control" id="totalMenber"
+                                                        name="totalMenber" placeholder="Số lượng nhân viên" required=""
+                                                        aria-invalid="true">
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group form-group-default">
-                                                    <label>Loại hình công ty</label>
-                                                    <input id="typeCompany" type="text" class="form-control"
-                                                        placeholder="Loại hình công ty">
+                                                    <!-- Super Admin không cần kiểm soát -->
+                                                    <label>Gói công ty</label>
+                                                    <select name="" id="locationCompany" class="form-control">
+                                                        <option value="">Cơ bản</option>
+                                                        <option value="">Tiêu chuẩn</option>
+                                                        <option value="">Nâng cao</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 pr-0">
-                                                    <div class="form-group form-group-default">
-                                                        <label>Số lượng nhân viên</label>
-                                                        <input id="amount" type="text" class="form-control"
-                                                            placeholder="Số lượng nhân viên">
-                                                    </div>
-                                                </div>
-                                            <div class="col-md-6">
-                                                    <div class="form-group form-group-default">
-                                                            <!-- Super Admin không cần kiểm soát -->
-                                                            <label>Gói công ty</label>
-                                                            <select name="" id="locationCompany" class="form-control">
-                                                                <option value="">Cơ bản</option>
-                                                                <option value="">Tiêu chuẩn</option>
-                                                                <option value="">Nâng cao</option>
-                                                            </select>
-                                                        </div>
-                                            </div>
+                                        </div>
+                                        <div class="pull-right mt-3 mb-3">
+                                            <input type="submit" name="" value="Thêm công ty" class="btn btn-success">
+                                            <input type="reset" name="" value="Hủy Bỏ" class="btn btn-danger">
                                         </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer no-bd">
-                                    <button type="button" id="addRowButton" class="btn btn-primary">Thêm công ty</button>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -161,7 +177,7 @@
                                             </button>
                                             <button type="button" data-toggle="tooltip" title=""
                                                 class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                                <i id="delete" class="fa fa-times"></i>
                                             </button>
                                         </div>
                                     </td>
@@ -180,30 +196,30 @@
                                             </button>
                                             <button type="button" data-toggle="tooltip" title=""
                                                 class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i id="alert_demo_8" class="fa fa-times"></i>
+                                                <i id="delete" class="fa fa-times"></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                        <td>XYZCBA</td>
-                                        <td class="package advanced">Nâng cao</td>
-                                        <td>80 người</td>
-                                        <td>12 Khuất duy tiến , Hà Nội</td>
-                                        <td>0123456789</td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title=""
-                                                    class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <a href="detail-company.html"><i class="fa fa-edit"></i></a>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title=""
-                                                    class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i id="alert_demo_8" class="fa fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <td>XYZCBA</td>
+                                    <td class="package advanced">Nâng cao</td>
+                                    <td>80 người</td>
+                                    <td>12 Khuất duy tiến , Hà Nội</td>
+                                    <td>0123456789</td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="detail-company.html"><i class="fa fa-edit"></i></a>
+                                            </button>
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <i id="delete" class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -228,7 +244,7 @@
                     var column = this;
                     var select = $(
                             '<select class="form-control"><option value=""></option></select>'
-                            )
+                        )
                         .appendTo($(column.footer()).empty())
                         .on('change', function () {
                             var val = $.fn.dataTable.util.escapeRegex(
@@ -272,13 +288,13 @@
         });
     });
 </script>
-
 <script>
+    // Click delete
     //== Class definition
     var SweetAlert2Demo = function () {
         //== Demos
         var initDemos = function () {
-            $('#alert_demo_8').click(function (e) {
+            $('#delete').click(function (e) {
                 swal({
                     title: 'Bạn có chắc không?',
                     type: 'warning',
@@ -316,6 +332,7 @@
             })
 
         };
+
         return {
             //== Init
             init: function () {
@@ -329,4 +346,5 @@
         SweetAlert2Demo.init();
     });
 </script>
+
 {% endblock javascripts %}

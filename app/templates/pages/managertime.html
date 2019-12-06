@@ -26,6 +26,16 @@
         display: block;
     }
 
+
+    .card-header{
+        padding: 0px 24px !important;
+    }
+
+    .fix-button-pro-mqn-main{
+        position: relative;
+        top: 10px;
+    }
+
     @media screen and (max-width: 1330px) and (min-width: 1024) {
         #lineChart canvas{
             width: auto !important;
@@ -40,7 +50,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Quản lý thời gian</h4>
-                        <button class="btn btn-primary btn-round ml-auto">
+                        <button class="btn btn-primary btn-round ml-auto fix-button-pro-mqn-main">
                             <span class="btn-label">
                                 <i class="fa fa-print"></i>
                             </span>
@@ -632,63 +642,6 @@
     });
 </script>
 
-<script>
-    //== Class definition
-    var SweetAlert2Demo = function () {
-        //== Demos
-        var initDemos = function () {
-            $('#alert_demo_8').click(function (e) {
-                swal({
-                    title: 'Bạn có chắc không?',
-                    type: 'warning',
-                    buttons: {
-                        cancel: {
-                            visible: true,
-                            text: 'HỦY BỎ',
-                            className: 'btn btn-danger'
-                        },
-                        confirm: {
-                            text: 'ĐỒNG Ý , XÓA',
-                            className: 'btn btn-success'
-                        }
-                    }
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        swal("Xóa thông tin thành công", {
-                            icon: "success",
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    } else {
-                        swal("Bạn đã hủy tác vụ xóa", {
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                    }
-                });
-            })
-
-        };
-
-        return {
-            //== Init
-            init: function () {
-                initDemos();
-            },
-        };
-    }();
-
-    //== Class Initialization
-    jQuery(document).ready(function () {
-        SweetAlert2Demo.init();
-    });
-</script>
 
 <script>
     $('#lineChart').sparkline([102, 109, 120, 99, 110, 105, 115], {

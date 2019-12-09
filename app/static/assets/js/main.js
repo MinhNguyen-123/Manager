@@ -48,15 +48,9 @@ $("#exampleValidation").validate({
 $("#formPassWordPros").validate({
     validClass: "success",
     rules: {
-        passwordOld: {
-            required: true
-        },
-        password: {
-            required: true
-        },
         confirmpassword: {
-            date: true
-        },
+            equalTo: "#passwordChange"
+        }
     },
     highlight: function (element) {
         $(element).closest('.form-group').removeClass('has-success').addClass('has-error');

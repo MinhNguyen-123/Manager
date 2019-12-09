@@ -104,7 +104,7 @@ def login():
         else:
             msg = "Unknown user"
 
-    return render_template( 'pages/login.html', form=form, msg=msg )
+    return render_template( 'pages/loginstaff.html', form=form, msg=msg )
 
 # App main route + generic routing
 @app.route('/', defaults={'path': 'index.html'})

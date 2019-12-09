@@ -1,6 +1,6 @@
 {% extends "layouts/login-defautl.html" %}
 
-{% block title %} Đăng nhập Admin{% endblock title %}
+{% block title %} Đăng nhập{% endblock title %}
 
 {% block stylesheets %}
 
@@ -120,7 +120,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group form-group-default form-show-validation has-error">
                                                 <label for="password"></label>Mật khẩu</label>
-                                                <input type="password" class="form-control" id="password"
+                                                <input type="password" class="form-control" id="passwordLogin"
                                                     name="password" placeholder="Mật khẩu" required="">
 
                                             </div>
@@ -215,7 +215,7 @@
                 required: true
             },
             confirmpassword: {
-                equalTo: "#password"
+                equalTo: "#passwordLogin"
             },
             birth: {
                 date: true

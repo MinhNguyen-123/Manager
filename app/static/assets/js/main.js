@@ -3,6 +3,10 @@ $('#birth').datetimepicker({
     format: 'MM/DD/YYYY'
 });
 
+$('#expDate').datetimepicker({
+    format: 'MM/DD/YYYY'
+});
+
 $('#state').select2({
     theme: "bootstrap"
 });
@@ -72,7 +76,7 @@ $('#checkout').datetimepicker({
 
 
 // Dbclick delete
-var SweetAlert2Demo = function () {
+var SweetAlert3Demo = function () {
     //== Demos
     var initDemos = function () {
         $('#alert_demo_8').dblclick(function (e) {
@@ -124,7 +128,7 @@ var SweetAlert2Demo = function () {
 
 //== Class Initialization
 jQuery(document).ready(function () {
-    SweetAlert2Demo.init();
+    SweetAlert3Demo.init();
 });
 
 

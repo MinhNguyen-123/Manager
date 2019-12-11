@@ -14224,7 +14224,7 @@ body {
     body[data-background-color="dark"] .card, body[data-background-color="dark"] .row-card-no-pd, body[data-background-color="dark"] .list-group-item, body[data-background-color="dark"] .timeline > li > .timeline-panel {
       background: #202940; }
     body[data-background-color="dark"] .card-pricing2 {
-      background: #202940 !important; }
+      background: #1a2035 !important; }
     body[data-background-color="dark"] .row-card-no-pd [class*=col] .card:before {
       background: rgba(181, 181, 181, 0.1) !important; }
     body[data-background-color="dark"] .card .card-header, body[data-background-color="dark"] .card .card-footer, body[data-background-color="dark"] .card .card-action, body[data-background-color="dark"] .card-profile .user-stats [class^="col"], body[data-background-color="dark"] .timeline > li > .timeline-panel, body[data-background-color="dark"] .table td, body[data-background-color="dark"] .table th, body[data-background-color="dark"] .breadcrumbs, body[data-background-color="dark"] .separator-dashed, body[data-background-color="dark"] .separator-solid, body[data-background-color="dark"] .separator-dot, body[data-background-color="dark"] .list-group .list-group-item, body[data-background-color="dark"] .conversations .messages-form, body[data-background-color="dark"] .mail-wrapper .mail-content .inbox-body .email-list .email-list-item, body[data-background-color="dark"] .page-with-aside .page-aside, body[data-background-color="dark"] .mail-wrapper .mail-content .email-head, body[data-background-color="dark"] .mail-wrapper .mail-content .email-sender, body[data-background-color="dark"] .main-panel .page-divider {

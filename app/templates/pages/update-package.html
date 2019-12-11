@@ -1,182 +1,44 @@
 {% extends "layouts/default.html" %}
 
-{% block title %} Quản lý chi nhánh {% endblock title %}
+{% block title %} Thông tin gói dịch vụ {% endblock title %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-{% endblock stylesheets %}
-
-{% block content %}
 <style>
-    .fix-right-mqn {
-        margin-right: 10px;
+    .not-buy {
+        background: black !important;
+        opacity: 0.3;
+        cursor: not-allowed;
     }
 
-    .timepicker {
-        position: relative;
-    }
-
-    .item-package-main-info {
-        background: white;
+    h4,
+    .modal-title {
         color: black;
-        text-align: center;
-    }
-
-    .title-package {
-        width: 0;
-        height: 0;
-        border-left: 100px solid transparent;
-        border-right: 100px solid transparent;
-        border-bottom: 100px solid #aaa;
-    }
-
-    article {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        height: 1000px;
-        position: relative;
-    }
-
-    ul {
-        display: flex;
-        top: 0px;
-        z-index: 10;
-        padding-bottom: 14px;
-    }
-
-    li {
-        list-style: none;
-        flex: 1;
-    }
-
-    li:last-child {
-        border-right: 1px solid #DDD;
-    }
-
-    button {
-        width: 100%;
-        border: 1px solid #DDD;
-        border-right: 0;
-        border-top: 0;
-        padding: 10px;
-        background: #FFF;
-        font-size: 14px;
-        font-weight: bold;
-        height: 60px;
-        color: #999
-    }
-
-    li.active button {
-        background: #F5F5F5;
-        color: #000;
-    }
-
-    table {
-        border-collapse: collapse;
-        table-layout: fixed;
-        width: 100%;
-    }
-
-    th {
-        background: #F5F5F5;
-        display: none;
-    }
-
-    td,
-    th {
-        height: 53px
-    }
-
-    td,
-    th {
-        border: 1px solid #DDD;
-        padding: 10px;
-        empty-cells: show;
-    }
-
-    td,
-    th {
         text-align: left;
     }
 
-    td+td,
-    th+th {
-        text-align: center;
-        display: none;
+    label {
+        text-align: left;
     }
 
-    td.default {
-        display: table-cell;
+    .img-creat-pay-pro-mqn {
+        width: 100%;
     }
 
-    .bg-purple {
-        border-top: 3px solid #A32362;
+    .disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+
     }
 
-    .bg-blue {
-        border-top: 3px solid #0097CF;
-    }
-
-    .sep {
-        background: #F5F5F5;
-        font-weight: bold;
-    }
-
-    .txt-l {
-        font-size: 19px;
-        color: white;
-        font-weight: bold;
-    }
-
-    .txt-top {
-        position: relative;
-        top: -9px;
-        color: white;
-        left: -2px;
-    }
-
-    .tick {
-        font-size: 18px;
-        color: #2CA01C;
-    }
-
-    .hide {
-        border: 0;
-        background: none;
-    }
-
-    @media (min-width: 640px) {
-        ul {
-            display: none;
-        }
-
-        td,
-        th {
-            display: table-cell !important;
-        }
-
-        td,
-        th {
-            width: 330px;
-
-        }
-
-        td+td,
-        th+th {
-            width: auto;
-        }
-    }
-
-    .info-package-pro-mqn h2{
-        font-size: 16px;
-        background: white;
-        padding: 10px 10px;
-        border-radius: 5px;
-        color: black;
-        font-weight: bold;
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
     }
 </style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+
 <div class="page-inner">
     <div class="row">
         <div class="col-md-12">
@@ -187,132 +49,174 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- Modal -->
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                            <div class="info-package-pro-mqn">
-                                <h1>Gói nâng cao</h1>
-                                <p>Giá tiền : 10.000.000 VNĐ</p>
-                                <h1>Đặc tính</h1>
-                                <p><span class="tick">&#10004;</span> Bao gồm các bản cập nhật miễn phí và các tính năng mới khi chúng có sẵn</p>
-                                <p><span class="tick">&#10004;</span> Không có phần mềm để cài đặt - đăng ký trực tuyến trong giây lát</p>
-                                <p><span class="tick">&#10004;</span> Nhập chi tiết nhân viên và công ty từ Excel, Outlook và .csv</p>
-                                <p><span class="tick">&#10004;</span> Chấp nhận thanh toán thẻ trong QuickBooks Online</p>
-                                <p><span class="tick">&#10004;</span> Điện thoại miễn phí và hỗ trợ trực tuyến</p>
-                                <p><span class="tick">&#10004;</span> Mã hóa mạnh bảo vệ dữ liệu doanh nghiệp của bạn	</p>
-                                <p><span class="tick">&#10004;</span> Sao lưu dữ liệu tự động</p>
-                                <p><span class="tick">&#10004;</span> Quản lý số lượng camera không giới hạn</p>
-                                <h2>Số điện thoại : (+84)4-6291-9536</h2>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-4 pl-md-0 not-buy">
+                            <div class="card-pricing2 card-success">
+                                <div class="pricing-header">
+                                    <h3 class="fw-bold">Standard</h3>
+                                    <span class="sub-title">Lorem ipsum</span>
+                                </div>
+                                <div class="price-value">
+                                    <div class="value">
+                                        <span class="currency">$</span>
+                                        <span class="amount">10.<span>99</span></span>
+                                        <span class="month">/month</span>
+                                    </div>
+                                </div>
+                                <ul class="pricing-content">
+                                    <li>50GB Disk Space</li>
+                                    <li>50 Email Accounts</li>
+                                    <li>50GB Monthly Bandwidth</li>
+                                    <li class="disable">10 Subdomains</li>
+                                    <li class="disable">15 Domains</li>
+                                </ul>
+                                <h1 class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3 disabled">Đã sử dụng</h1>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
-                            <article>
-                                    <ul>
-                                            <li class="bg-purple">
-                                              <button>Gói miễn phí</button>
-                                            </li>
-                                            <li class="bg-blue">
-                                              <button>Gói tiêu chuẩn</button>
-                                            </li>
-                                            <li class="bg-blue active">
-                                              <button>Gói nâng cao</button>
-                                            </li>
-                                            <li class="bg-blue">
-                                              <button>Gói VIP</button>
-                                            </li>
-                                          </ul>  
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="hide"></th>
-                                            <th class="bg-purple">Gói miễn phí</th>
-                                            <th class="bg-blue">Gói tiêu chuẩn</th>
-                                            <th class="bg-blue default">Gói nâng cao</th>
-                                            <th class="bg-blue">Gói VIP</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Giá hàng tháng</td>
-                                            <td><span class="txt-l">0</span> <span class="txt-top">vnđ</span></td>
-                                            <td><span class="txt-l">5.000.000</span> <span class="txt-top">vnđ</span>
-                                            </td>
-                                            <td class="default"><span class="txt-l">10.000.000</span> <span
-                                                    class="txt-top">vnđ</span></td>
-                                            <td><span class="txt-l">15.000.000</span> <span class="txt-top">vnđ</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="sep">Đặc tính chức năng</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bao gồm các bản cập nhật miễn phí và các tính năng mới khi chúng có sẵn
-                                            </td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td class="default"><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Không có phần mềm để cài đặt - đăng ký trực tuyến trong giây lát</td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td class="default"><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nhập chi tiết nhân viên và công ty từ Excel, Outlook và .csv</td>
-                                            <td></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td class="default"><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Chấp nhận thanh toán thẻ trong QuickBooks Online</td>
-                                            <td></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td class="default"><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="sep">Được bảo vệ và nhận hỗ trợ</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Điện thoại miễn phí và hỗ trợ trực tuyến</td>
-                                            <td></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td class="default"><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mã hóa mạnh bảo vệ dữ liệu doanh nghiệp của bạn</td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td class="default"><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sao lưu dữ liệu tự động</td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                            <td class="default"><span class="tick">&#10004;</span></td>
-                                            <td><span class="tick">&#10004;</span></td>
-                                        </tr>
-                                       
-                                        <tr>
-                                            <td class="hide"></td>
-                                            <td>LIÊN HỆ</td>
-                                            <td>LIÊN HỆ</td>
-                                            <td class="default">LIÊN HỆ</td>
-                                            <td>LIÊN HỆ</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </article>
+                        <div class="col-md-4 pl-md-0 pr-md-0">
+                            <div class="card-pricing2 card-primary">
+                                <div class="pricing-header">
+                                    <h3 class="fw-bold">Business</h3>
+                                    <span class="sub-title">Lorem ipsum</span>
+                                </div>
+                                <div class="price-value">
+                                    <div class="value">
+                                        <span class="currency">$</span>
+                                        <span class="amount">20.<span>99</span></span>
+                                        <span class="month">/month</span>
+                                    </div>
+                                </div>
+                                <ul class="pricing-content">
+                                    <li>60GB Disk Space</li>
+                                    <li>60 Email Accounts</li>
+                                    <li>60GB Monthly Bandwidth</li>
+                                    <li>15 Subdomains</li>
+                                    <li class="disable">20 Domains</li>
+                                </ul>
+                                <h1 class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3" data-toggle="modal"
+                                    data-target="#myModal">Mua gói</h1>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Thánh toán gói dịch vụ</h4>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="/static/assets/img/creditcardicons.png" alt=""
+                                                    class="img-creat-pay-pro-mqn">
+                                                <form id="exampleValidation" novalidate="novalidate" method="post"
+                                                    enctype="multipart/form-data">
+                                                    <h4>Thông tin thẻ</h4>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 pr-0">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="username">Họ và tên chủ thẻ</label>
+                                                                <input type="text" class="form-control" id="username"
+                                                                    name="username" placeholder="Họ và tên chủ thẻ"
+                                                                    required="" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="cardNumber">MÃ THẺ</label>
+                                                                <input type="text" class="form-control" id="cardNumber"
+                                                                    name="cardNumber" placeholder="SỐ THẺ" required=""
+                                                                    minlength="12" maxlength="14" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 pr-0">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="expDate">NGÀY HẾT HẠN</label>
+                                                                <input type="text" class="form-control" id="expDate"
+                                                                    name="expDate" placeholder="NGÀY HẾT HẠN"
+                                                                    required="" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="cvCode">MÃ CV</label>
+                                                                <input type="text" class="form-control" id="cvCode"
+                                                                    name="cvCode" placeholder="MÃ CV" required=""
+                                                                    maxlength="4" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <h4>Thông tin cá nhân</h4>
+                                                    <div class="row">
+                                                        <div class="col-md-6 pr-0">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="phoneNumber">Số điện thoại</label>
+                                                                <input type="number" class="form-control"
+                                                                    id="phoneNumber" name="phoneNumber"
+                                                                    placeholder="Số điện thoại" required=""
+                                                                    aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="email">Địa chỉ email</label>
+                                                                <input type="email" class="form-control" id="email"
+                                                                    name="email" placeholder="Địa chỉ email" required=""
+                                                                    aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right mt-3 mb-3">
+                                                        <input type="submit" name="" value="Đăng kí gói"
+                                                            class="btn btn-success">
+                                                        <input type="reset" name="" value="Hủy Bỏ"
+                                                            class="btn btn-danger">
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 pr-md-0">
+                            <div class="card-pricing2 card-secondary">
+                                <div class="pricing-header">
+                                    <h3 class="fw-bold">Premium</h3>
+                                    <span class="sub-title">Lorem ipsum</span>
+                                </div>
+                                <div class="price-value">
+                                    <div class="value">
+                                        <span class="currency">$</span>
+                                        <span class="amount">30.<span>99</span></span>
+                                        <span class="month">/month</span>
+                                    </div>
+                                </div>
+                                <ul class="pricing-content">
+                                    <li>70GB Disk Space</li>
+                                    <li>70 Email Accounts</li>
+                                    <li>70GB Monthly Bandwidth</li>
+                                    <li>20 Subdomains</li>
+                                    <li>25 Domains</li>
+                                </ul>
+                                <h1 class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Đã sử dụng</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -321,35 +225,42 @@
 
 {% block javascripts %}
 
-<script src="/static/assets/js/setting-demo2.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script>
-    $("ul").on("click", "li", function () {
-        var pos = $(this).index() + 2;
-        $("tr").find('td:not(:eq(0))').hide();
-        $('td:nth-child(' + pos + ')').css('display', 'table-cell');
-        $("tr").find('th:not(:eq(0))').hide();
-        $('li').removeClass('active');
-        $(this).addClass('active');
-    });
+    $('#cardNumber')
+        .blur(function () {
+            var value = $(this).val();
+            value = value.match(/.{1,4}/g).join(" ");
+            $(this).val(value);
+        })
+        .focus(function () {
+            var value = $(this).val();
+            value = value.replace(/\s/g, '');
+            $(this).val(value);
+        });
 
-    // Initialize the media query
-    var mediaQuery = window.matchMedia('(min-width: 640px)');
-
-    // Add a listen event
-    mediaQuery.addListener(doSomething);
-
-    // Function to do something with the media query
-    function doSomething(mediaQuery) {
-        if (mediaQuery.matches) {
-            $('.sep').attr('colspan', 5);
-        } else {
-            $('.sep').attr('colspan', 2);
-        }
+    function setInputFilter(textbox, inputFilter) {
+        ["input"].forEach(function (event) {
+            textbox.addEventListener(event, function () {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                } else {
+                    this.value = "";
+                }
+            });
+        });
     }
-
-    // On load
-    doSomething(mediaQuery);
+    setInputFilter(document.getElementById("cardNumber"), function (value) {
+        return /^-?\d*$/.test(value);
+    });
+    setInputFilter(document.getElementById("cvCode"), function (value) {
+        return /^-?\d*$/.test(value);
+    });
 </script>
+<script src="/static/assets/js/setting-demo2.js"></script>
 
 {% endblock javascripts %}

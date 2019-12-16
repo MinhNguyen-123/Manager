@@ -113,7 +113,7 @@
                                                     enctype="multipart/form-data">
                                                     <h4>Thông tin thẻ</h4>
                                                     <div class="row">
-                                                        <div class="col-sm-6 pr-0">
+                                                        <div class="col-sm-12 ">
                                                             <div
                                                                 class="form-group form-group-default form-show-validation">
                                                                 <label for="username">Họ và tên chủ thẻ</label>
@@ -122,13 +122,32 @@
                                                                     required="" aria-invalid="true">
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-sm-6 pr-0">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="codeNember">ngân hàng</label>
+                                                                <input list="codeUser" class="form-control"
+                                                                    id="codeNember" name="codeNember"
+                                                                    placeholder="NGÂN HÀNG" required=""
+                                                                    aria-invalid="true">
+                                                                <datalist id="codeUser">
+                                                                    <option value="Vietcombak">Vietcombak</option>
+                                                                    <option value="TPbank">TPbank</option>
+                                                                    <option value="Techcombank">Techcombank</option>
+                                                                    <option value="Vietcombank">Vietcombank</option>
+                                                                    <option value="MBbank">MBbank</option>
+                                                                    <option value="ACBbank">ACBbank</option>
+                                                                </datalist>
+                                                            </div>
+                                                        </div>
                                                         <div class="col-sm-6">
                                                             <div
                                                                 class="form-group form-group-default form-show-validation">
                                                                 <label for="cardNumber">MÃ THẺ</label>
                                                                 <input type="text" class="form-control" id="cardNumber"
                                                                     name="cardNumber" placeholder="SỐ THẺ" required=""
-                                                                    minlength="12" maxlength="14" aria-invalid="true">
+                                                                    minlength="12" maxlength="16" aria-invalid="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -148,30 +167,7 @@
                                                                 <label for="cvCode">MÃ CV</label>
                                                                 <input type="text" class="form-control" id="cvCode"
                                                                     name="cvCode" placeholder="MÃ CV" required=""
-                                                                    maxlength="4" aria-invalid="true">
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <h4>Thông tin cá nhân</h4>
-                                                    <div class="row">
-                                                        <div class="col-md-6 pr-0">
-                                                            <div
-                                                                class="form-group form-group-default form-show-validation">
-                                                                <label for="phoneNumber">Số điện thoại</label>
-                                                                <input type="number" class="form-control"
-                                                                    id="phoneNumber" name="phoneNumber"
-                                                                    placeholder="Số điện thoại" required=""
-                                                                    aria-invalid="true">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div
-                                                                class="form-group form-group-default form-show-validation">
-                                                                <label for="email">Địa chỉ email</label>
-                                                                <input type="email" class="form-control" id="email"
-                                                                    name="email" placeholder="Địa chỉ email" required=""
-                                                                    aria-invalid="true">
+                                                                    maxlength="3" aria-invalid="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -210,7 +206,96 @@
                                     <li>20 Subdomains</li>
                                     <li>25 Domains</li>
                                 </ul>
-                                <h1 class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Đã sử dụng</h1>
+                                <h1 class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3" data-toggle="modal"
+                                    data-target="#myModal">Đã sử dụng</h1>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Thánh toán gói dịch vụ</h4>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="/static/assets/img/creditcardicons.png" alt=""
+                                                    class="img-creat-pay-pro-mqn">
+                                                <form id="exampleValidation" novalidate="novalidate" method="post"
+                                                    enctype="multipart/form-data">
+                                                    <h4>Thông tin thẻ</h4>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 ">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="username">Họ và tên chủ thẻ</label>
+                                                                <input type="text" class="form-control" id="username"
+                                                                    name="username" placeholder="Họ và tên chủ thẻ"
+                                                                    required="" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-6 pr-0">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="codeNember">ngân hàng</label>
+                                                                <input list="codeUser" class="form-control"
+                                                                    id="codeNember" name="codeNember"
+                                                                    placeholder="NGÂN HÀNG" required=""
+                                                                    aria-invalid="true">
+                                                                <datalist id="codeUser">
+                                                                    <option value="Vietcombak">Vietcombak</option>
+                                                                    <option value="TPbank">TPbank</option>
+                                                                    <option value="Techcombank">Techcombank</option>
+                                                                    <option value="Vietcombank">Vietcombank</option>
+                                                                    <option value="MBbank">MBbank</option>
+                                                                    <option value="ACBbank">ACBbank</option>
+                                                                </datalist>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="cardNumber">MÃ THẺ</label>
+                                                                <input type="text" class="form-control" id="cardNumber"
+                                                                    name="cardNumber" placeholder="SỐ THẺ" required=""
+                                                                    minlength="12" maxlength="16" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 pr-0">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="expDate">NGÀY HẾT HẠN</label>
+                                                                <input type="text" class="form-control" id="expDate"
+                                                                    name="expDate" placeholder="NGÀY HẾT HẠN"
+                                                                    required="" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div
+                                                                class="form-group form-group-default form-show-validation">
+                                                                <label for="cvCode">MÃ CV</label>
+                                                                <input type="text" class="form-control" id="cvCode"
+                                                                    name="cvCode" placeholder="MÃ CV" required=""
+                                                                    maxlength="3" aria-invalid="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right mt-3 mb-3">
+                                                        <input type="submit" name="" value="Đăng kí gói"
+                                                            class="btn btn-success">
+                                                        <input type="reset" name="" value="Hủy Bỏ"
+                                                            class="btn btn-danger">
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -261,6 +346,7 @@
         return /^-?\d*$/.test(value);
     });
 </script>
+
 <script src="/static/assets/js/setting-demo2.js"></script>
 
 {% endblock javascripts %}

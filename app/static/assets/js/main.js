@@ -1,10 +1,10 @@
 
 $('#birth').datetimepicker({
-    format: 'MM/DD/YYYY'
+    format: 'DD/MM/YYYY'
 });
 
 $('#expDate').datetimepicker({
-    format: 'MM/DD/YYYY'
+    format: 'DD/MM/YYYY'
 });
 
 $('#state').select2({
